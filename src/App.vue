@@ -6,7 +6,7 @@
       <outcomes-research-wrapper :_title="`Statistical Power Applet`">
         <outcomes-navbar />
         <div id="app" className="wrapper-for-outer-flexbox">
-          <decision-tree :decisionTree="decisionData" initialStep="start" />
+          <decision-tree initialStep="start" />
         </div>
         <outcomes-footer :copyright="copyright" />
       </outcomes-research-wrapper> </v-main

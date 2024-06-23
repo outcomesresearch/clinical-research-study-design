@@ -2,29 +2,65 @@
 
 <template>
   <div>
-    <h1>{{ currentQuestion.question }}</h1>
     <transition name="fade" mode="out-in">
-      <ul v-if="currentQuestion.options" :key="currentQuestion.id">
-        <li v-for="option in currentQuestion.options" :key="option.answer">
-          <button @click="advanceTree(option.next)">{{ option.answer }}</button>
-        </li>
-      </ul>
+      <v-card :disabled="loading" :loading="loading" class="mx-auto my-12">
+        <v-progress-linear
+          color="deep-purple"
+          height="4"
+          :model-value="progress"
+        ></v-progress-linear>
+        <v-card-item>
+          <v-card-title>{{
+            currentQuestion.question
+          }}</v-card-title> </v-card-item
+        >
+        <v-card-item
+          v-if="currentQuestion.options"
+          :key="currentQuestion.id"
+          className="flex flex-wrap"
+        >
+          <step-card
+            v-for="option in currentQuestion.options"
+            :title="option.answer"
+            :description="`investigator assigned exposures`"
+            :supportSeeExample="false"
+            :key="option.answer"
+            @click="advanceTree(option.next)"
+          />
+        </v-card-item>
+        <v-card-actions>
+          <v-btn
+            text="Go back"
+            variant="text"
+            v-if="path.length > 0"
+            @click="goBack"
+          ></v-btn>
+          <v-btn
+            text="Learn More"
+            variant="text"
+            :style="{ marginLeft: 'auto' }"
+          ></v-btn>
+        </v-card-actions>
+      </v-card>
     </transition>
-    <button v-if="path.length > 0" @click="goBack">Go Back</button>
   </div>
 </template>
 
 <script>
+import StepCard from "./StepCard.vue";
 import experimentalStudyTree, {
   EXPERIMENTAL_STUDY_ID,
 } from "../assets/experimentalStudyTree";
 import observationalStudyTree, {
   OBSERVATIONAL_STUDY_ID,
 } from "../assets/observationalStudyTree";
+import { findLongestPath } from "../utils";
 
 export default {
   data() {
     return {
+      loading: false,
+      selection: 1,
       currentStep: "start",
       path: [],
       steps: {
@@ -41,14 +77,22 @@ export default {
       },
     };
   },
+  components: {
+    StepCard,
+  },
   computed: {
     currentQuestion() {
       return this.steps[this.currentStep];
     },
+    progress() {
+      let longestNextPath = findLongestPath(this.currentStep, this.steps);
+      let totalPathLength = longestNextPath + this.path.length;
+      let pathDoneSoFar = this.path.length;
+      return (pathDoneSoFar / totalPathLength) * 100;
+    },
   },
   methods: {
     advanceTree(nextStep) {
-      console.log(this.steps)
       if (nextStep) {
         this.path.push(this.currentStep); // Save the current step in the path
         this.currentStep = nextStep;

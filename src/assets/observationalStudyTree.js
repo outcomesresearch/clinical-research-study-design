@@ -37,7 +37,7 @@ const MORE_THAN_ONE = ">1Subject"
 const descriptiveStudySubtree = {
   [DESCRIPTIVE_STUDY]: {
     id: DESCRIPTIVE_STUDY,
-    question: "How many subjects?",
+    question: "How many subjects were there?",
     options: [
       { answer: "1", next: ONE_SUBJECT },
       { answer: "More than 1", next: MORE_THAN_ONE },
@@ -58,7 +58,7 @@ const descriptiveStudySubtree = {
 export default {
   [OBSERVATIONAL_STUDY_ID]: {
     id: OBSERVATIONAL_STUDY_ID,
-    question: "Comparison group?",
+    question: "Was there a comparison group?",
     options: [
       { answer: "Yes", next: ANALYTICAL_STUDY },
       { answer: "No", next: DESCRIPTIVE_STUDY },
