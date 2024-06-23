@@ -1,19 +1,23 @@
 <!-- src/App.vue -->
 
 <template>
-  <outcomes-research-wrapper :_title="`Statistical Power Applet`">
-    <outcomes-navbar />
-    <div id="app" className="wrapper-for-outer-flexbox">
-      <decision-tree :decisionTree="decisionData" initialStep="start" />
-    </div>
-    <outcomes-footer :copyright="copyright" />
-  </outcomes-research-wrapper>
+  <v-app>
+    <v-main>
+      <outcomes-research-wrapper :_title="`Statistical Power Applet`">
+        <outcomes-navbar />
+        <div id="app" className="wrapper-for-outer-flexbox">
+          <decision-tree :decisionTree="decisionData" initialStep="start" />
+        </div>
+        <outcomes-footer :copyright="copyright" />
+      </outcomes-research-wrapper> </v-main
+  ></v-app>
 </template>
 
 <script>
 import DecisionTree from "./components/DecisionTree.vue";
 
 export default {
+  name: "App",
   components: {
     DecisionTree,
   },
@@ -28,6 +32,6 @@ export default {
 @import "./assets/wrapper-style.css";
 
 #app {
-  height: 100%
+  height: 100%;
 }
 </style>
