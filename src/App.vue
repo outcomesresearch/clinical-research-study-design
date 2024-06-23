@@ -8,11 +8,11 @@
         <div id="app" class="wrapper-for-outer-flexbox">
           <div class="app-container">
             <decision-tree initialStep="start" />
-            <div class="footnote-wrapper">
-              <span class="footnote text-grey-lighten-1"
-                >Modified from Grimes and Shulz, Lancet 2002; 359: 57–61</span
-              >
-            </div>
+          </div>
+          <div class="footnote-container">
+            <span class="footnote text-grey-lighten-1"
+              >Modified from Grimes and Shulz, Lancet 2002; 359: 57–61
+            </span>
           </div>
         </div>
         <outcomes-footer :copyright="copyright" />
@@ -43,14 +43,17 @@ export default {
   height: 100%;
 }
 
+.app-container,
+.footnote-container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .app-container {
   margin-left: auto;
   margin-right: auto;
-  padding: 10px;
   max-width: 900px;
   height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .v-card-title {
@@ -61,7 +64,7 @@ export default {
   font-style: italic;
 }
 
-.footnote-wrapper {
+.footnote-container {
   margin-left: auto;
   flex-grow: 1;
   flex-direction: column;
