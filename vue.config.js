@@ -1,4 +1,4 @@
-
+const { defineConfig } = require('@vue/cli-service')
 
 const webpackParams = {
   title: 'Choose the Correct Study Design',
@@ -9,10 +9,15 @@ const webpackParams = {
   url: 'https://outcomesresearch.github.io/clinical-research-study-design/',
 };
 
-module.exports = {
+module.exports = defineConfig({
   publicPath:
     process.env.NODE_ENV === 'production' ? '/clinical-research-study-design/' : '/',
-  transpileDependencies: ['vuetify'],
+  transpileDependencies: true,
+  pluginOptions: {
+    vuetify: {
+      // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
+    }
+  },
   chainWebpack: (config) => {
     config.plugin('html').tap((args) => {
       Object.entries(webpackParams).forEach(([key, value]) => {
@@ -21,4 +26,4 @@ module.exports = {
       return args;
     });
   },
-};
+})
