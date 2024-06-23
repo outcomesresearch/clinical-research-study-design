@@ -5,8 +5,10 @@
     <v-main>
       <outcomes-research-wrapper :_title="`Statistical Power Applet`">
         <outcomes-navbar />
-        <div id="app" className="wrapper-for-outer-flexbox">
-          <decision-tree initialStep="start" />
+        <div id="app" class="wrapper-for-outer-flexbox">
+          <div class="app-container">
+            <decision-tree initialStep="start" />
+          </div>
         </div>
         <outcomes-footer :copyright="copyright" />
       </outcomes-research-wrapper> </v-main
@@ -33,5 +35,16 @@ export default {
 
 #app {
   height: 100%;
+}
+
+.app-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  max-width: 900px;
+}
+
+.v-card-title {
+  white-space: wrap;
 }
 </style>

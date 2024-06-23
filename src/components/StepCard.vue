@@ -7,12 +7,10 @@
     :color="getBackgroundColor"
   >
     <v-card-item>
-      <v-card-title>{{ title }}</v-card-title>
+      <v-card-title class="card-title">{{ title }}</v-card-title>
     </v-card-item>
-    <v-card-text>
-      <div>
-        {{ description }}
-      </div>
+    <v-card-text v-if="description">
+      {{ description }}
     </v-card-text>
   </v-card>
 </template>

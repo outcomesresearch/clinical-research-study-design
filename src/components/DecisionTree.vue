@@ -17,19 +17,19 @@
         <v-card-item>
           <v-card-title>{{ currentQuestion.question }}</v-card-title>
         </v-card-item>
-        <v-card-text>{{ currentQuestion.description }}</v-card-text>
+        <v-card-text>{{ currentQuestion.question_description }}</v-card-text>
         <v-card-item
           selected-class="bg-primary"
           v-if="currentQuestion.options"
           :key="currentQuestion.id"
           class="flex flex-wrap"
         >
-          <v-layout>
+          <v-layout class="flex-sm-wrap flex-md-wrap flex-lg-wrap ga-5">
             <step-card
               v-for="option in currentQuestion.options"
               :key="option.answer"
               :title="option.answer"
-              :description="`investigator assigned exposures`"
+              :description="option.description"
               :supportSeeExample="false"
               :currentlySelected="this.nextStep === option.next"
               @click="setNextStep(option.next)"
@@ -42,14 +42,22 @@
             text="Back"
             variant="text"
             @click="goBack"
-          ></v-btn>
+          />
           <v-btn
+            v-if="this.steps[this.currentStep].options"
             text="Next"
             variant="text"
             :style="{ marginLeft: 'auto' }"
             @click="advanceTree()"
             :disabled="!this.nextStep"
-          ></v-btn>
+          />
+          <v-btn
+            v-if="!this.steps[this.currentStep].options"
+            text="Start over"
+            variant="text"
+            :style="{ marginLeft: 'auto' }"
+            @click="startOver()"
+          />
         </v-card-actions>
       </v-card>
     </transition>
@@ -76,6 +84,7 @@ export default {
   },
   computed: {
     currentQuestion() {
+      console.log(this.steps[this.currentStep]);
       return this.steps[this.currentStep];
     },
     progress() {
@@ -93,6 +102,11 @@ export default {
     },
     setNextStep(next) {
       this.nextStep = next;
+    },
+    startOver() {
+      this.currentStep = this.path[0];
+      this.path = [];
+      this.nextStep = undefined;
     },
     goBack() {
       this.currentStep = this.path.pop(); // Move back to the previous step
