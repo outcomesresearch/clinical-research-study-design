@@ -1,26 +1,33 @@
+<!-- src/App.vue -->
+
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <outcomes-research-wrapper :_title="`Statistical Power Applet`">
+    <outcomes-navbar />
+    <div id="app" className="wrapper-for-outer-flexbox">
+      <decision-tree :decisionTree="decisionData" initialStep="start" />
+    </div>
+    <outcomes-footer :copyright="copyright" />
+  </outcomes-research-wrapper>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DecisionTree from "./components/DecisionTree.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    DecisionTree,
+  },
+  data() {
+    return {
+      copyright: `© 2024 Washington University School of Medicine, St. Louis, Missouri`,
+    };
+  },
+};
 </script>
-
 <style>
+@import "./assets/wrapper-style.css";
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%
 }
 </style>
