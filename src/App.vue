@@ -8,11 +8,17 @@
         <div id="app" class="wrapper-for-outer-flexbox">
           <div class="app-container">
             <decision-tree initialStep="start" />
+            <div class="footnote-wrapper">
+              <span class="footnote text-grey-lighten-1"
+                >Modified from Grimes and Shulz, Lancet 2002; 359: 57–61</span
+              >
+            </div>
           </div>
         </div>
         <outcomes-footer :copyright="copyright" />
-      </outcomes-research-wrapper> </v-main
-  ></v-app>
+      </outcomes-research-wrapper>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
@@ -42,9 +48,25 @@ export default {
   margin-right: auto;
   padding: 10px;
   max-width: 900px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .v-card-title {
   white-space: wrap;
+}
+
+.footnote {
+  font-style: italic;
+}
+
+.footnote-wrapper {
+  margin-left: auto;
+  flex-grow: 1;
+  flex-direction: column;
+  display: flex;
+  align-content: end;
+  justify-content: end;
 }
 </style>
