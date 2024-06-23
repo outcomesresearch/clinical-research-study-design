@@ -52,7 +52,8 @@ export default {
 .app-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 900px;
+  width: 900px;
+  max-width: 100%;
   height: 100%;
 }
 
