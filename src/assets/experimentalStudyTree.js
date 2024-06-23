@@ -5,7 +5,7 @@ export default {
   [EXPERIMENTAL_STUDY_ID]: {
     title: "Experimental Study",
     id: EXPERIMENTAL_STUDY_ID,
-    question: "Random Allocation?",
+    question: "Random Assignment?",
     question_description: "Randomization is used to minimize bias and involves the random assignment of participants to different intervention groups. This is done to ensure that, on average, known and unknown factors that could influence treatment response are evenly distributed across groups, allowing for a fair comparison.",
     options: [
       {
@@ -23,7 +23,7 @@ export default {
   [RANDOMIZED_CONROLLED_TRIAL]: {
     id: RANDOMIZED_CONROLLED_TRIAL,
     question: "You chose randomized clinical trial",
-    question_description: "A randomized trial is an experimental design with random allocation of interventions."
+    question_description: "A randomized trial is an experimental design with random assignment of interventions."
   },
   [NON_RANDOMIZED_CONROLLED_TRIAL]: {
     id: NON_RANDOMIZED_CONROLLED_TRIAL,
