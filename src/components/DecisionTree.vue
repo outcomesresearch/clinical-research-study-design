@@ -3,40 +3,52 @@
 <template>
   <div>
     <transition name="fade" mode="out-in">
-      <v-card :disabled="loading" :loading="loading" class="mx-auto my-12">
+      <v-card
+        :disabled="loading"
+        :loading="loading"
+        class="mx-auto my-12 container"
+      >
         <v-progress-linear
-          color="deep-purple"
-          height="4"
+          color="red-darken-4"
+          height="5"
           :model-value="progress"
+          class="progressBarTag"
         ></v-progress-linear>
         <v-card-item>
           <v-card-title>{{ currentQuestion.question }}</v-card-title>
         </v-card-item>
+        <v-card-text>{{ currentQuestion.description }}</v-card-text>
         <v-card-item
+          selected-class="bg-primary"
           v-if="currentQuestion.options"
           :key="currentQuestion.id"
-          className="flex flex-wrap"
+          class="flex flex-wrap"
         >
-          <step-card
-            v-for="option in currentQuestion.options"
-            :title="option.answer"
-            :description="`investigator assigned exposures`"
-            :supportSeeExample="false"
-            :key="option.answer"
-            @click="advanceTree(option.next)"
-          />
+          <v-layout>
+            <step-card
+              v-for="option in currentQuestion.options"
+              :key="option.answer"
+              :title="option.answer"
+              :description="`investigator assigned exposures`"
+              :supportSeeExample="false"
+              :currentlySelected="this.nextStep === option.next"
+              @click="setNextStep(option.next)"
+            />
+          </v-layout>
         </v-card-item>
         <v-card-actions>
           <v-btn
-            text="Go back"
-            variant="text"
             v-if="path.length > 0"
+            text="Back"
+            variant="text"
             @click="goBack"
           ></v-btn>
           <v-btn
-            text="Learn More"
+            text="Next"
             variant="text"
             :style="{ marginLeft: 'auto' }"
+            @click="advanceTree()"
+            :disabled="!this.nextStep"
           ></v-btn>
         </v-card-actions>
       </v-card>
@@ -53,10 +65,10 @@ export default {
   data() {
     return {
       loading: false,
-      selection: 1,
       currentStep: ROOT,
       path: [],
       steps: rootTree,
+      nextStep: undefined,
     };
   },
   components: {
@@ -74,22 +86,23 @@ export default {
     },
   },
   methods: {
-    advanceTree(nextStep) {
-      if (nextStep) {
-        this.path.push(this.currentStep); // Save the current step in the path
-        this.currentStep = nextStep;
-      } else {
-        alert("End of selection. You can review your choices or restart.");
-      }
+    advanceTree() {
+      this.path.push(this.currentStep); // Save the current step in the path
+      this.currentStep = this.nextStep;
+      this.nextStep = undefined;
+    },
+    setNextStep(next) {
+      this.nextStep = next;
     },
     goBack() {
       this.currentStep = this.path.pop(); // Move back to the previous step
+      this.nextStep = undefined;
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -97,5 +110,14 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+.container {
+  padding: 12px;
+}
+
+.progressBarTag {
+  margin: -12px;
+  margin-bottom: 12px;
+  width: calc(100% + 24px);
 }
 </style>

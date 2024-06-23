@@ -4,6 +4,7 @@
     :loading="loading"
     class="mx-auto my-12"
     max-width="374"
+    :color="getBackgroundColor"
   >
     <v-card-item>
       <v-card-title>{{ title }}</v-card-title>
