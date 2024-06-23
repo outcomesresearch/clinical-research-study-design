@@ -10,10 +10,8 @@
           :model-value="progress"
         ></v-progress-linear>
         <v-card-item>
-          <v-card-title>{{
-            currentQuestion.question
-          }}</v-card-title> </v-card-item
-        >
+          <v-card-title>{{ currentQuestion.question }}</v-card-title>
+        </v-card-item>
         <v-card-item
           v-if="currentQuestion.options"
           :key="currentQuestion.id"
@@ -48,12 +46,7 @@
 
 <script>
 import StepCard from "./StepCard.vue";
-import experimentalStudyTree, {
-  EXPERIMENTAL_STUDY_ID,
-} from "../assets/experimentalStudyTree";
-import observationalStudyTree, {
-  OBSERVATIONAL_STUDY_ID,
-} from "../assets/observationalStudyTree";
+import rootTree, { ROOT } from "../assets/rootTree";
 import { findLongestPath } from "../utils";
 
 export default {
@@ -61,20 +54,9 @@ export default {
     return {
       loading: false,
       selection: 1,
-      currentStep: "start",
+      currentStep: ROOT,
       path: [],
-      steps: {
-        start: {
-          id: "start",
-          question: "Did the investigator assign exposures?",
-          options: [
-            { answer: "Yes", next: EXPERIMENTAL_STUDY_ID },
-            { answer: "No", next: OBSERVATIONAL_STUDY_ID },
-          ],
-        },
-        ...experimentalStudyTree,
-        ...observationalStudyTree,
-      },
+      steps: rootTree,
     };
   },
   components: {
