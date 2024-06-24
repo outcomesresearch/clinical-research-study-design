@@ -58,7 +58,7 @@ export default {
 }
 
 .v-card-title {
-  white-space: wrap;
+  white-space: pre-wrap;
 }
 
 .footnote {
