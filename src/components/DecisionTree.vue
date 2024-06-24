@@ -24,7 +24,7 @@
           :key="currentQuestion.id"
           class="flex flex-wrap"
         >
-          <v-layout class="flex-sm-wrap flex-md-wrap flex-lg-wrap ga-5">
+          <div class="options-container">
             <step-card
               v-for="option in currentQuestion.options"
               :key="option.answer"
@@ -34,7 +34,7 @@
               :currentlySelected="this.nextStep === option.next"
               @click="setNextStep(option.next)"
             />
-          </v-layout>
+          </div>
         </v-card-item>
         <v-card-actions>
           <v-btn
@@ -133,5 +133,23 @@ export default {
   margin: -12px;
   margin-bottom: 12px;
   width: calc(100% + 24px);
+}
+
+.options-container {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.options-container .v-card {
+  margin: 2px !important;
+}
+
+@media only screen and (max-width: 500px) {
+  .options-container {
+    flex-direction: column;
+  }
 }
 </style>
