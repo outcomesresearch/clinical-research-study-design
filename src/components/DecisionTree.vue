@@ -13,22 +13,21 @@
           class="progressBarTag"
         ></v-progress-linear>
         <v-card-item>
-          <v-card-title>{{ currentQuestion.question }}</v-card-title>
+          <v-card-title>{{ currentQuestion.title }}</v-card-title>
         </v-card-item>
-        <v-card-text>{{ currentQuestion.question_description }}</v-card-text>
+        <v-card-text>{{ currentQuestion.description }}</v-card-text>
         <v-card-item
           selected-class="bg-primary"
-          v-if="currentQuestion.options"
+          v-if="currentQuestion.choices"
           :key="currentQuestion.id"
           class="flex flex-wrap"
         >
-          <div class="options-container">
+          <div class="choices-container">
             <step-card
-              v-for="option in currentQuestion.options"
+              v-for="option in currentQuestion.choices"
               :key="option.answer"
               :title="option.answer"
-              :description="option.description"
-              :supportSeeExample="false"
+              :description="option.option_description"
               :currentlySelected="this.nextStep === option.next"
               @click="setNextStep(option.next)"
             />
@@ -48,7 +47,7 @@
             @click="$emit('started', true)"
           />
           <v-btn
-            v-if="this.steps[this.currentStep].options"
+            v-if="this.steps[this.currentStep].choices"
             text="Next"
             variant="text"
             :style="{ marginLeft: 'auto' }"
@@ -56,11 +55,29 @@
             :disabled="!this.nextStep"
           />
           <v-btn
-            v-if="!this.steps[this.currentStep].options"
+            v-if="
+              !this.steps[this.currentStep].choices && // if no configured choices
+              !this.steps[this.currentStep].next // if no configured next step
+            "
             text="Start over"
             variant="text"
             :style="{ marginLeft: 'auto' }"
             @click="startOver()"
+          />
+          <v-btn
+            v-if="
+              this.steps[this.currentStep].type === 'statement' &&
+              this.steps[this.currentStep].next
+            "
+            text="Continue"
+            variant="text"
+            :style="{ marginLeft: 'auto' }"
+            @click="
+              () => {
+                setNextStep(currentQuestion.next);
+                advanceTree();
+              }
+            "
           />
         </v-card-actions>
       </v-card>
@@ -88,7 +105,6 @@ export default {
   },
   computed: {
     currentQuestion() {
-      console.log(this.steps[this.currentStep]);
       return this.steps[this.currentStep];
     },
     progress() {
@@ -139,7 +155,7 @@ export default {
   width: calc(100% + 24px);
 }
 
-.options-container {
+.choices-container {
   display: flex;
   gap: 25px;
   margin-top: 20px;
@@ -147,12 +163,12 @@ export default {
   justify-content: center;
 }
 
-.options-container .v-card {
+.choices-container .v-card {
   margin: 2px !important;
 }
 
 @media only screen and (max-width: 500px) {
-  .options-container {
+  .choices-container {
     flex-direction: column;
   }
 }

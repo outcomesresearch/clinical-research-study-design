@@ -1,14 +1,19 @@
 export function findLongestPath(currentNode, steps) {
-  console.log(currentNode, steps)
-  // Base case: if the current node has no options or is undefined, return length 0
-  if (!currentNode || !steps[currentNode] || !steps[currentNode].options) {
+  const nodeConfig = { ...steps[currentNode] };
+
+  // Base case: if the option has leaf=true there are no more choices
+  if (!currentNode || !nodeConfig || nodeConfig.leaf) {
     return 0;
   }
 
   let maxLength = 0;
 
   // Loop through each option in the current node
-  for (const option of steps[currentNode].options) {
+  if (!nodeConfig.choices && nodeConfig.type === 'statement') {
+    nodeConfig.choices = [{ next: nodeConfig.next }]
+  }
+
+  for (const option of nodeConfig.choices) {
     if (option.next) {
       // Recursive call to traverse down this path
       const pathLength = 1 + findLongestPath(option.next, steps);
