@@ -7,7 +7,12 @@
         <outcomes-navbar />
         <div id="app" class="wrapper-for-outer-flexbox">
           <div class="app-container">
-            <decision-tree initialStep="start" />
+            <intro-card v-if="inIntro" @started="setStarted" />
+            <decision-tree
+              initialStep="start"
+              v-else
+              @started="(e) => setStarted(e)"
+            />
           </div>
           <div class="footnote-container">
             <span class="footnote text-grey-lighten-1"
@@ -23,15 +28,24 @@
 
 <script>
 import DecisionTree from "./components/DecisionTree.vue";
+import IntroCard from "./components/IntroCard.vue";
 // import VisualFlowChart from "./components/VisualFlowChart.vue";
 
 export default {
   name: "App",
   components: {
     DecisionTree,
+    IntroCard,
+  },
+  methods: {
+    setStarted(isTriggeringIntro = false) {
+      console.log(isTriggeringIntro)
+      this.inIntro = isTriggeringIntro;
+    },
   },
   data() {
     return {
+      inIntro: true,
       copyright: `© 2024 Washington University School of Medicine, St. Louis, Missouri`,
     };
   },

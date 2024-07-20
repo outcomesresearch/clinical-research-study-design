@@ -1,5 +1,3 @@
-<!-- src/components/DecisionTree.vue -->
-
 <template>
   <div>
     <transition name="fade" mode="out-in">
@@ -42,6 +40,12 @@
             text="Back"
             variant="text"
             @click="goBack"
+          />
+          <v-btn
+            v-else
+            text="Back to Intro"
+            variant="text"
+            @click="$emit('started', true)"
           />
           <v-btn
             v-if="this.steps[this.currentStep].options"
