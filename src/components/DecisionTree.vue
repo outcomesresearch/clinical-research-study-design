@@ -1,11 +1,7 @@
 <template>
   <div>
     <transition name="fade" mode="out-in">
-      <v-card
-        :disabled="loading"
-        :loading="loading"
-        class="mx-auto my-12 container"
-      >
+      <v-card class="mx-auto my-12 container">
         <v-progress-linear
           color="red-darken-4"
           height="5"
@@ -93,7 +89,6 @@ import { findLongestPath } from "../utils";
 export default {
   data() {
     return {
-      loading: false,
       currentStep: ROOT,
       path: [],
       steps: rootTree,

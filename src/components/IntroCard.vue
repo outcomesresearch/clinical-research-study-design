@@ -1,9 +1,5 @@
 <template>
-  <v-card
-    :disabled="loading"
-    :loading="loading"
-    class="mx-auto my-12 container"
-  >
+  <v-card class="mx-auto my-12 container">
     <v-card-item>
       <v-card-title>Clinical Research Study Design</v-card-title>
     </v-card-item>

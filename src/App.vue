@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     setStarted(isTriggeringIntro = false) {
-      console.log(isTriggeringIntro)
       this.inIntro = isTriggeringIntro;
     },
   },

@@ -1,11 +1,5 @@
 <template>
-  <v-card
-    :disabled="loading"
-    :loading="loading"
-    class="mx-auto my-12"
-    max-width="374"
-    :color="getBackgroundColor"
-  >
+  <v-card class="mx-auto my-12" max-width="374" :color="getBackgroundColor">
     <v-card-item>
       <v-card-title class="card-title">{{ title }}</v-card-title>
     </v-card-item>
@@ -51,16 +45,8 @@ export default {
   },
   data() {
     return {
-      loading: false,
       selection: 1,
     };
-  },
-  methods: {
-    reserve() {
-      this.loading = true;
-
-      setTimeout(() => (this.loading = false), 2000);
-    },
   },
   components: {},
   computed: {
