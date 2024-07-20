@@ -5,7 +5,6 @@
     <v-main>
       <outcomes-research-wrapper :_title="`Statistical Power Applet`">
         <outcomes-navbar />
-        <visual-flow-chart />
         <div id="app" class="wrapper-for-outer-flexbox">
           <div class="app-container">
             <decision-tree initialStep="start" />
@@ -24,13 +23,12 @@
 
 <script>
 import DecisionTree from "./components/DecisionTree.vue";
-import VisualFlowChart from "./components/VisualFlowChart.vue";
+// import VisualFlowChart from "./components/VisualFlowChart.vue";
 
 export default {
   name: "App",
   components: {
     DecisionTree,
-    VisualFlowChart,
   },
   data() {
     return {
