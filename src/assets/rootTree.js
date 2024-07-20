@@ -6,7 +6,7 @@ export default {
     [ROOT]: {
         id: ROOT,
         title: "Did the investigator assign exposures?",
-        description: "The key distinction between experimental studies and observational studies lies in the level of control the investigator has over exposure or intervention.",
+        component: "AssignExposures",
         choices: [
             {
                 answer: "Yes",

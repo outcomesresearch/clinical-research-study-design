@@ -11,7 +11,9 @@
         <v-card-item>
           <v-card-title>{{ currentQuestion.title }}</v-card-title>
         </v-card-item>
-        <v-card-text>{{ currentQuestion.description }}</v-card-text>
+        <v-card-item>
+          <component :is="currentQuestion.component" />
+        </v-card-item>
         <v-card-item
           selected-class="bg-primary"
           v-if="currentQuestion.choices"
@@ -85,6 +87,7 @@
 import StepCard from "./StepCard.vue";
 import rootTree, { ROOT } from "../assets/rootTree";
 import { findLongestPath } from "../utils";
+import Descriptions from "./stepDescriptionComponents/index";
 
 export default {
   data() {
@@ -97,6 +100,7 @@ export default {
   },
   components: {
     StepCard,
+    ...Descriptions,
   },
   computed: {
     currentQuestion() {
