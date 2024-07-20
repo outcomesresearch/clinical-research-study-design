@@ -13,7 +13,7 @@ export default {
   },
   [RANDOM_ASSIGNMENT]: {
     type: "question",
-    title: "Random Assignment?",
+    title: "Were participants randomly assigned?",
     component: "RandomAllocationDescription",
     choices: [
       {

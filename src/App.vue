@@ -87,4 +87,14 @@ export default {
   align-content: end;
   justify-content: end;
 }
+
+.v-tab__slider {
+  background: #b71c1c !important;
+  opacity: 30% !important;
+}
+
+:not(.v-tab-item--selected) > .v-btn__content > .v-tab__slider {
+  background: grey !important;
+  opacity: var(--v-border-opacity) !important;
+}
 </style>
