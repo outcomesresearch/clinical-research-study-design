@@ -32,11 +32,23 @@ export default [
                 "Inputs": ["Observational Study"]
             },
             {
+                "nodeId": "Comparison Group?",
+                "detail": "This is QS3",
+                "Edge": [
+                    {
+                        "node": "Analytical Study"
+                    },
+                    {
+                        "node": "Descriptive Study"
+                    }
+                ],
+                "Inputs": ["Observational Study"]
+            },
+            {
                 "nodeId": "Observational Study",
                 "detail": "This is QS2",
                 "Edge": [
-                    { "node": "Analytical Study" },
-                    { "node": "Descriptive Study" }
+                    { node: "Comparison Group?" }
                 ],
                 "Inputs": ["Did investigator assign exposures?"],
                 "label": "This is the label from ... what to what"
@@ -85,13 +97,15 @@ export default [
                 "nodeId": "Case Report",
                 "detail": "This is QS3",
                 "Edge": [],
-                "Inputs": ["Number of subjects"]
+                "Inputs": ["Number of subjects"],
+                cssClass: "study"
             },
             {
                 "nodeId": "Case Series",
                 "detail": "This is QS3",
                 "Edge": [],
-                "Inputs": ["Number of subjects"]
+                "Inputs": ["Number of subjects"],
+                cssClass: "study"
             },
             {
                 "nodeId": "Random Allocation",
@@ -116,13 +130,15 @@ export default [
                         "node": "Is the aim of the study to\ndeomstrate a new treatment is significantly\nbetter than existing treatment or placebo?"
                     }
                 ],
-                "Inputs": ["Random Allocation"]
+                "Inputs": ["Random Allocation"],
+                cssClass: "study"
             },
             {
                 "nodeId": "Non-Randomized Controlled Trial",
                 "detail": "This is QS3",
                 "Edge": [],
-                "Inputs": ["Random Allocation"]
+                "Inputs": ["Random Allocation"],
+                cssClass: "study"
             },
             {
                 "nodeId": "Is the aim of the study to\ndeomstrate a new treatment is significantly\nbetter than existing treatment or placebo?",
@@ -145,7 +161,8 @@ export default [
                 "Edge": [],
                 "Inputs": [
                     "Is the aim of the study to\ndeomstrate a new treatment is significantly\nbetter than existing treatment or placebo?"
-                ]
+                ],
+                cssClass: "study"
             },
             {
                 "nodeId": "Equivalence or Non-\nInferiority Trial",
@@ -153,25 +170,29 @@ export default [
                 "Edge": [],
                 "Inputs": [
                     "Is the aim of the study to\ndeomstrate a new treatment is significantly\nbetter than existing treatment or placebo?"
-                ]
+                ],
+                cssClass: "study"
             },
             {
                 "nodeId": "Cohort Study",
                 "detail": "This is QS3",
                 "Edge": [],
-                "Inputs": ["Direction?"]
+                "Inputs": ["Direction?"],
+                cssClass: "study"
             },
             {
                 "nodeId": "Case Control Study",
                 "detail": "This is QS3",
                 "Edge": [],
-                "Inputs": ["Direction?"]
+                "Inputs": ["Direction?"],
+                cssClass: "study"
             },
             {
                 "nodeId": "Cross-Sectional Study",
                 "detail": "This is QS3",
                 "Edge": [],
-                "Inputs": ["Direction?"]
+                "Inputs": ["Direction?"],
+                cssClass: "study"
             }
         ]
     }

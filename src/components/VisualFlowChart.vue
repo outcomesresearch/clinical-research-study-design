@@ -56,8 +56,8 @@ export default {
     let myMap = new Map();
     let initialdata = smalldata[0].reports;
     for (const i in initialdata) {
-      const { nodeId, Edge, detail, Inputs } = initialdata[i];
-      myMap.set(nodeId, { edges: Edge, detail, inputs: Inputs });
+      const { nodeId, Edge, detail, Inputs, cssClass } = initialdata[i];
+      myMap.set(nodeId, { edges: Edge, detail, inputs: Inputs, cssClass });
     }
     this.gdata = myMap;
   },
@@ -69,10 +69,12 @@ export default {
       if (this.gdata === null) return "no data";
       const graph = new dagred3.graphlib.Graph({}).setGraph({});
       for (const [key, value] of this.gdata.entries()) {
+        if (key === "Cross-Sectional Study") console.log({ value });
         graph.setNode(key, {
           label: key,
           Edge: value.edges,
           detail: value.detail,
+          class: value.cssClass,
         });
         value.edges.forEach((edge) => {
           graph.setEdge(key, edge.node, {
@@ -95,9 +97,6 @@ export default {
       const render = new dagred3.render();
       // Run the renderer. This is what draws the final graph.
       render(svg, graph);
-      //   svg.append("g")
-      //   .call(new dagred3.render(), graph)
-      //   .attr("transform", `scale(${(width > 1000) ? 1 : width/1000}) translate(${(width - graph.graph().width) / 2},20)`);
 
       let tooltip = d3
         .select("body")
@@ -120,15 +119,17 @@ export default {
             .style("left", event.pageX + 10 + "px");
         })
         .on("mouseout", () => {
-          d3.selectAll("rect.label-container").style("fill", "white");
+          d3.selectAll("rect.label-container").classed("parent", false);
+          d3.selectAll("rect.label-container").classed("child", false);
+          d3.selectAll("rect.label-container").classed("selected", false);
           tooltip.style("visibility", "hidden");
         })
         .selectAll("rect.label-container")
         .on("mouseenter", function () {
-          d3.select(this).style("fill", "lightgray");
+          d3.select(this).classed("selected", true);
         })
         .on("mouseout", function () {
-          d3.select(this).style("fill", "white");
+          d3.select(this).classed("selected", false);
         });
       dagre.layout(graph);
       //   svg.attr("width", "100%");
@@ -138,37 +139,31 @@ export default {
     highlightEdges: function (d) {
       let children = this.gdata.get(d).edges.map((A) => A.node);
       let parents = this.gdata.get(d).inputs;
-      if (children.length > 0) {
+
+      function setClass(elementSelector, className) {
         d3.select("svg")
           .selectAll("g.node")
-          .filter((d) => children.includes(d))
+          .filter(elementSelector)
           .select("rect.label-container")
-          .style("fill", "steelblue");
+          .classed(className, true);
       }
+
+      if (children.length > 0) setClass((d) => children.includes(d), "child");
+
       const circulardp = children.filter((element) =>
         parents.includes(element)
       );
-      if (parents.length > 0) {
-        d3.select("svg")
-          .selectAll("g.node")
-          .filter((d) => parents.includes(d))
-          .select("rect.label-container")
-          .style("fill", "orange");
-      }
-      if (circulardp.length > 0) {
-        d3.select("svg")
-          .selectAll("g.node")
-          .filter((d) => circulardp.includes(d))
-          .select("rect.label-container")
-          .style("fill", "gold");
-      }
+
+      if (parents.length > 0) setClass((d) => parents.includes(d), "parent");
+      if (circulardp.length > 0)
+        setClass((d) => circulardp.includes(d), "parnet");
     },
   },
 };
 </script>
 
 <style>
-body {
+.svg-content {
   font: 300 14px "Helvetica Neue", Helvetica;
 }
 
@@ -197,6 +192,7 @@ body {
   fill: #fff;
   stroke-width: 1px;
 }
+
 #tooltip_template {
   position: absolute;
   background-color: white;
@@ -210,5 +206,21 @@ body {
   stroke: #333;
   fill: #333;
   stroke-width: 1.5px;
+}
+
+.study > rect {
+  fill: lightyellow;
+}
+
+.node > rect.label-container.parent {
+  fill: orange;
+}
+
+.node > rect.label-container.child {
+  fill: steelblue;
+}
+
+.node > rect.label-container.selected {
+  fill: gray;
 }
 </style>
