@@ -14,6 +14,9 @@ import CaseReportDescription from "./CaseReportDescription.vue"
 import CaseSeriesDescription from "./CaseSeriesDescription.vue"
 import ComparisonGroupDescription from "./ComparisonGroupDescription.vue"
 import ObservationalStudyDescription from "./ObservationalStudyDescription.vue"
+import NewTreatmentBetter from "./NewTreatmentBetter"
+import EquivalenceTrial from "./EquivalenceTrial"
+import SuperiorityTrial from "./SuperiorityTrial"
 
 export default {
     AssignExposures,
@@ -32,4 +35,7 @@ export default {
     CaseSeriesDescription,
     ComparisonGroupDescription,
     ObservationalStudyDescription,
+    NewTreatmentBetter,
+    EquivalenceTrial,
+    SuperiorityTrial,
 }
