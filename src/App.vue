@@ -97,4 +97,24 @@ export default {
   background: grey !important;
   opacity: var(--v-border-opacity) !important;
 }
+
+.v-list-item-subtitle {
+  -webkit-box-orient: unset;
+  padding-bottom: 5px;
+}
+
+.v-list-item {
+  padding-inline: 0px !important;
+}
+
+ol,
+ul {
+  /* list-style: initial; */
+  padding-left: 20px; /* Add padding to align list items properly */
+}
+
+ol > li,
+ul > li {
+  margin: 10px 0;
+}
 </style>

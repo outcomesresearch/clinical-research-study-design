@@ -1,11 +1,11 @@
 <template>
   <div>
     <p>
-      Randomization is a crucial aspect of randomized clinical trials (RCTs). It involves the random
-      assignment of participants to different intervention groups. This is done
-      to ensure that, on average, known and unknown factors that could influence
-      treatment response are evenly distributed across groups, allowing for a
-      fair comparison.
+      Randomization is a crucial aspect of randomized clinical trials (RCTs). It
+      involves the random assignment of participants to different intervention
+      groups. This is done to ensure that, on average, known and unknown factors
+      that could influence treatment response are evenly distributed across
+      groups, allowing for a fair comparison.
     </p>
     <v-card class="mt-5">
       <v-tabs v-model="tab" bg-color="gray" grow class="mb-3">
@@ -74,24 +74,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.v-list-item-subtitle {
-  -webkit-box-orient: unset;
-  padding-bottom: 5px;
-}
-
-.v-list-item {
-  padding-inline: 0px !important;
-}
-
-ol,
-ul {
-  /* list-style: initial; */
-  padding-left: 20px; /* Add padding to align list items properly */
-}
-
-ol > li,
-ul > li {
-  margin: 10px 0;
-}
-</style>
+<style scoped></style>
