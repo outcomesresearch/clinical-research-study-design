@@ -22,7 +22,7 @@ const analyticalStudySubtree = {
   },
   [DIRECTION]: {
     type: "question",
-    title: "Direction?",
+    title: "What is the direction of research?",
     id: DIRECTION,
     component: "DirectionDescription",
     choices: [

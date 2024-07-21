@@ -117,4 +117,8 @@ ol > li,
 ul > li {
   margin: 10px 0;
 }
+
+p {
+  padding-bottom: 20px;
+}
 </style>

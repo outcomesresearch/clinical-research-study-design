@@ -1,8 +1,7 @@
 <template>
   <p>
-    In an experimental study, the researcher actively intervenes by assigning
-    subjects to different exposures or interventions. The investigator controls
-    who receives the experimental treatment and who serves as a control group.
+    Analytical studies are hypothesis-driven investigations which test
+    associations or causal relationships.
   </p>
 </template>
 

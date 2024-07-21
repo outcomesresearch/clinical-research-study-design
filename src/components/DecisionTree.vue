@@ -157,7 +157,6 @@ export default {
 .choices-container {
   display: flex;
   gap: 25px;
-  margin-top: 20px;
   margin-bottom: 20px;
   justify-content: center;
 }
