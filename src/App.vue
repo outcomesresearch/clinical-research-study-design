@@ -8,11 +8,7 @@
         <div id="app" class="wrapper-for-outer-flexbox">
           <div class="app-container">
             <intro-card v-if="inIntro" @started="setStarted" />
-            <decision-tree
-              initialStep="start"
-              v-else
-              @started="(e) => setStarted(e)"
-            />
+            <decision-tree v-else @started="(e) => setStarted(e)" />
           </div>
           <div class="footnote-container">
             <span class="footnote text-grey-lighten-1"
@@ -66,7 +62,7 @@ export default {
 .app-container {
   margin-left: auto;
   margin-right: auto;
-  width: 900px;
+  width: 1500px;
   max-width: 100%;
   height: 100%;
 }
@@ -120,5 +116,9 @@ ul > li {
 
 p {
   padding-bottom: 20px;
+}
+
+.italic {
+  font-style: italic;
 }
 </style>

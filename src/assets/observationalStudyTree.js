@@ -64,14 +64,14 @@ const analyticalStudySubtree = {
   },
   [PROSPECTIVE_COHORT_STUDY]: {
     type: "statement",
-    title: "You chose Prospective COhort Study.",
+    title: "You chose prospective cohort study.",
     id: PROSPECTIVE_COHORT_STUDY,
     leaf: true,
     component: "ProspectiveCohortStudyDescription",
   },
   [RETROSPECTIVE_COHORT_STUDY]: {
     type: "statement",
-    title: "You chose retrospective COhort Study.",
+    title: "You chose retrospective cohort study.",
     id: RETROSPECTIVE_COHORT_STUDY,
     leaf: true,
     component: "RetrospectiveCohortStudyDescription",
