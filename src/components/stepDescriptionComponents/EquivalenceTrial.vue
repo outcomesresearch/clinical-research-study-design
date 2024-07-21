@@ -175,7 +175,6 @@ import { ref, provide } from "vue";
 import { useResponsive } from "../../mixins/responsiveMixin"; // Adjust the path as needed
 
 export default {
-  name: "RandomizedControlledTrialDescription",
   setup() {
     const { windowWidth, isMobile } = useResponsive();
     provide("windowWidth", windowWidth);
