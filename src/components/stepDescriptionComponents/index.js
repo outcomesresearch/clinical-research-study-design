@@ -5,7 +5,9 @@ import RandomizedControlledTrialDescription from "./RandomizedControlledTrialDes
 import NonRandomizedControlledTrialDescription from "./NonRandomizedControlledTrialDescription.vue"
 import AnalyticalStudyDescription from "./AnalyticalStudyDescription.vue"
 import DirectionDescription from "./DirectionDescription.vue"
-import CohortStudyDescription from "./CohortStudyDescription.vue"
+import ProspectiveCohortStudyDescription from "./ProspectiveCohortStudyDescription.vue"
+import RetrospectiveCohortStudyDescription from "./RetrospectiveCohortStudyDescription.vue"
+import PerspectiveQuestion from "./PerspectiveQuestion.vue"
 import CaseControlStudyDescription from "./CaseControlStudyDescription.vue"
 import CrossSectionalStudyDescription from "./CrossSectionalStudyDescription.vue"
 import DescriptiveStudyDescription from "./DescriptiveStudyDescription.vue"
@@ -26,7 +28,9 @@ export default {
     NonRandomizedControlledTrialDescription,
     AnalyticalStudyDescription,
     DirectionDescription,
-    CohortStudyDescription,
+    ProspectiveCohortStudyDescription,
+    RetrospectiveCohortStudyDescription,
+    PerspectiveQuestion,
     CaseControlStudyDescription,
     CrossSectionalStudyDescription,
     DescriptiveStudyDescription,

@@ -1,7 +1,6 @@
 export const OBSERVATIONAL_STUDY_ID = "observationalStudy";
 
 const ANALYTICAL_STUDY = "analyticalStudy";
-const EXPOSURE_OUTCOME = "exposureOutcome";
 const OUTCOME_EXPOSURE = "outcomeExposure";
 const OUTCOME_EXPOSURE_SAME_TIME = "outcomeExposureSameTIme";
 const COMPARISON_GROUP = "comparison gruop"
@@ -10,7 +9,9 @@ const HOW_MANY_SUBJECTS = "subjectcount"
 const DESCRIPTIVE_STUDY = "descriptiveStudy";
 const ONE_SUBJECT = "1Subject";
 const MORE_THAN_ONE = ">1Subject";
-
+const PERSPECTIVE = "perspective"
+const PROSPECTIVE_COHORT_STUDY = "prospective"
+const RETROSPECTIVE_COHORT_STUDY = "retrospective"
 
 const analyticalStudySubtree = {
   [ANALYTICAL_STUDY]: {
@@ -28,7 +29,7 @@ const analyticalStudySubtree = {
     choices: [
       {
         answer: "Exposure → Outcome",
-        next: EXPOSURE_OUTCOME,
+        next: PERSPECTIVE,
         option_description: "Exposure leads to outcome"
       },
       {
@@ -43,12 +44,37 @@ const analyticalStudySubtree = {
       },
     ],
   },
-  [EXPOSURE_OUTCOME]: {
+  [PERSPECTIVE]: {
+    type: "question",
+    title: "What is the perspective of the researcher relative to the data under study?",
+    id: PERSPECTIVE,
+    component: "PerspectiveQuestion",
+    choices: [
+      {
+        answer: "Prospective",
+        next: PROSPECTIVE_COHORT_STUDY,
+        option_description: "Outcomes tracked moving forward in time"
+      },
+      {
+        answer: "Retrospective",
+        next: RETROSPECTIVE_COHORT_STUDY,
+        option_description: "Outcomes tracked by examining past records"
+      },
+    ],
+  },
+  [PROSPECTIVE_COHORT_STUDY]: {
     type: "statement",
-    title: "You chose Cohort Study.",
-    id: EXPOSURE_OUTCOME,
+    title: "You chose Prospective COhort Study.",
+    id: PROSPECTIVE_COHORT_STUDY,
     leaf: true,
-    component: "CohortStudyDescription",
+    component: "ProspectiveCohortStudyDescription",
+  },
+  [RETROSPECTIVE_COHORT_STUDY]: {
+    type: "statement",
+    title: "You chose retrospective COhort Study.",
+    id: RETROSPECTIVE_COHORT_STUDY,
+    leaf: true,
+    component: "RetrospectiveCohortStudyDescription",
   },
   [OUTCOME_EXPOSURE]: {
     type: "statement",
