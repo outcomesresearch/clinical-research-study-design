@@ -166,7 +166,7 @@
           </ul>
         </v-tabs-window-item>
         <v-tabs-window-item value="oxford">
-          <h4 class="my-4">Level of Evidence <strong>2b</strong>.</h4>
+          <h4 class="my-4">Level of Evidence <strong>3b</strong>.</h4>
           <p>
             Level 3 evidence is obtained from well-designed case-control or
             cohort studies. These studies usually involve comparing groups of
