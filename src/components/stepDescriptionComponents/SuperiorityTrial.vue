@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ size }}
     <p>
       A superiority trial aims to show that one treatment is significantly
       better than another in terms of efficacy, safety, or both. It is a

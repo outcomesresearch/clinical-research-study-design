@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ size }}
     <p>
       Participants are randomly assigned to different interventions and baseline
       characteristics should be comparable between groups. Control and
