@@ -81,7 +81,7 @@
           </ol>
         </v-tabs-window-item>
         <v-tabs-window-item value="criticalAppraisal">
-          <p class="mb-5">
+          <p>
             To critically appraise RCTs, consider factors such as randomization,
             use of blinding, adequate sample size to provide precise estimates,
             and outcome measurement. There are several types of bias that can
@@ -124,7 +124,7 @@
         </v-tabs-window-item>
         <v-tabs-window-item value="oxford">
           <h4 class="my-4">Level of Evidence <strong>1b</strong>.</h4>
-          <p class="mb-5">
+          <p>
             This refers to evidence derived from well-conducted randomized
             clinical trials (RCTs) with a narrow confidence interval. In Level
             1b evidence, the research is based on high-quality RCTs that include

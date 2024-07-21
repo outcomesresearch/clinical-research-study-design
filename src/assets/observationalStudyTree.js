@@ -1,8 +1,8 @@
 export const OBSERVATIONAL_STUDY_ID = "observationalStudy";
 
 const ANALYTICAL_STUDY = "analyticalStudy";
-const OUTCOME_EXPOSURE = "outcomeExposure";
-const OUTCOME_EXPOSURE_SAME_TIME = "outcomeExposureSameTIme";
+const CASE_CONTROL = "outcomeExposure";
+const CROSS_SECTIONAL_STUDY = "outcomeExposureSameTIme";
 const COMPARISON_GROUP = "comparison gruop"
 const DIRECTION = "direction"
 const HOW_MANY_SUBJECTS = "subjectcount"
@@ -34,12 +34,12 @@ const analyticalStudySubtree = {
       },
       {
         answer: "Outcome → Exposure",
-        next: OUTCOME_EXPOSURE,
+        next: CASE_CONTROL,
         option_description: "Outcome leads to exposure"
       },
       {
         answer: "Exposure ≟ Outcome",
-        next: OUTCOME_EXPOSURE_SAME_TIME,
+        next: CROSS_SECTIONAL_STUDY,
         option_description: "Relationship between exposure and outcome is indeterminate"
       },
     ],
@@ -76,17 +76,17 @@ const analyticalStudySubtree = {
     leaf: true,
     component: "RetrospectiveCohortStudyDescription",
   },
-  [OUTCOME_EXPOSURE]: {
+  [CASE_CONTROL]: {
     type: "statement",
     title: "You chose Case Control Study.",
-    id: OUTCOME_EXPOSURE,
+    id: CASE_CONTROL,
     leaf: true,
     component: "CaseControlStudyDescription",
   },
-  [OUTCOME_EXPOSURE_SAME_TIME]: {
+  [CROSS_SECTIONAL_STUDY]: {
     type: "statement",
     title: "You chose Cross Sectional Study.",
-    id: OUTCOME_EXPOSURE_SAME_TIME,
+    id: CROSS_SECTIONAL_STUDY,
     leaf: true,
     component: "CrossSectionalStudyDescription",
   },

@@ -69,7 +69,7 @@
         </v-tabs-window-item>
         <v-tabs-window-item value="oxford">
           <h4 class="my-4">Level of Evidence <strong>2b</strong>.</h4>
-          <p class="mb-5">
+          <p>
             Level 2b evidence refers to individual cohort studies, including
             retrospective cohort studies, which provide moderate-quality
             evidence. These studies offer valuable insights but must be

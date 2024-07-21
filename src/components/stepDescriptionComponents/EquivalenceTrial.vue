@@ -66,7 +66,7 @@
           </ol>
         </v-tabs-window-item>
         <v-tabs-window-item value="criticalAppraisal">
-          <p class="mb-5">
+          <p>
             To critically appraise equivalence or non-inferiority RCTs, consider
             factors such as adequacy of randomization, use of blinding, adequate
             sample size to provide precise estimates, and use of validated and
