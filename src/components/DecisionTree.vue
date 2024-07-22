@@ -9,7 +9,18 @@
           class="progressBarTag"
         ></v-progress-linear>
         <v-card-item>
-          <v-card-title>{{ currentQuestion.title }}</v-card-title>
+          <v-card-title className="v-card-title card-title-bar">
+            <span className="mr-5">{{ currentQuestion.title }}</span>
+            <span className="chips" v-if="breadcrumbs.length">
+              <v-chip
+                v-for="chip in breadcrumbs"
+                :key="chip.title"
+                :color="chip.color"
+                tonal
+                >{{ chip.title }}</v-chip
+              >
+            </span>
+          </v-card-title>
         </v-card-item>
         <v-card-item>
           <component :is="currentQuestion.component" />
@@ -106,6 +117,12 @@ export default {
     currentQuestion() {
       return this.steps[this.currentStep];
     },
+    breadcrumbs() {
+      return [
+        ...this.path.map((p) => this.steps[p]),
+        this.steps[this.currentStep], // for a given step, should we already show their chip?
+      ].filter((p) => p.type === "statement");
+    },
     progress() {
       let longestNextPath = findLongestPath(this.currentStep, this.steps);
       let totalPathLength = longestNextPath + this.path.length;
@@ -165,9 +182,35 @@ export default {
   margin: 2px !important;
 }
 
+.card-title-bar {
+  display: flex;
+}
+
+.card-title-bar > .chips {
+  display: flex;
+  flex-grow: 1;
+  justify-content: end;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  .card-title-bar {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .card-title-bar > .chips {
+    justify-content: start;
+    margin-top: 10px;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   .choices-container {
     flex-direction: column;
+  }
+  .card-title-bar > .chips {
+    display: none;
   }
 }
 </style>

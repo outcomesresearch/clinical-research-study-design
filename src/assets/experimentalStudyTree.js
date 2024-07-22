@@ -12,7 +12,8 @@ export default {
     title: "Experimental Study",
     id: EXPERIMENTAL_STUDY_ID,
     component: "ExperimentalStudyDescription",
-    next: RANDOM_ASSIGNMENT
+    next: RANDOM_ASSIGNMENT,
+    color: "blue-lighten-2"
   },
   [RANDOM_ASSIGNMENT]: {
     type: "question",
@@ -34,9 +35,10 @@ export default {
   [RANDOMIZED_CONTROLLED_TRIAL]: {
     type: "statement",
     id: RANDOMIZED_CONTROLLED_TRIAL,
-    title: "You chose randomized clinical trial",
+    title: "Randomized Clinical Trial",
     component: "RandomizedControlledTrialDescription",
     next: NEW_TREATMENT_BETTER,
+    color: "blue-darken-2"
   },
   [NEW_TREATMENT_BETTER]: {
     type: "question",
@@ -58,22 +60,25 @@ export default {
   [SUPERIORITY_TRIAL]: {
     type: "statement",
     id: SUPERIORITY_TRIAL,
-    title: "You chose Superiority Trial",
+    title: "Superiority Trial",
     leaf: true,
     component: "SuperiorityTrial",
+    color: "indigo-darken-4"
   },
   [EQUIVALENCE_TRIAL]: {
     type: "statement",
     id: EQUIVALENCE_TRIAL,
-    title: "You chose Equivalence or Non-Inferiority Trial",
+    title: "Equivalence or Non-Inferiority Trial",
     leaf: true,
     component: "EquivalenceTrial",
+    color: "indigo-darken-4"
   },
   [NONRANDOMIZED_CONTROLLED_TRIAL]: {
     type: "statement",
     id: NONRANDOMIZED_CONTROLLED_TRIAL,
-    title: "You chose non randomized clinical trial",
+    title: "Non-randomized Clinical Trial",
     leaf: true,
     component: "NonRandomizedControlledTrialDescription",
+    color: "indigo-darken-4"
   },
 };

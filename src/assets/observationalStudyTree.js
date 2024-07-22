@@ -19,7 +19,8 @@ const analyticalStudySubtree = {
     title: "Analytical Study",
     id: ANALYTICAL_STUDY,
     component: "AnalyticalStudyDescription",
-    next: DIRECTION
+    next: DIRECTION,
+    color: 'green-darken-2'
   },
   [DIRECTION]: {
     type: "question",
@@ -64,31 +65,35 @@ const analyticalStudySubtree = {
   },
   [PROSPECTIVE_COHORT_STUDY]: {
     type: "statement",
-    title: "You chose prospective cohort study.",
+    title: "Prospective Cohort Study",
     id: PROSPECTIVE_COHORT_STUDY,
     leaf: true,
     component: "ProspectiveCohortStudyDescription",
+    color: "teal-darken-4"
   },
   [RETROSPECTIVE_COHORT_STUDY]: {
     type: "statement",
-    title: "You chose retrospective cohort study.",
+    title: "Retrospective Cohort Study",
     id: RETROSPECTIVE_COHORT_STUDY,
     leaf: true,
     component: "RetrospectiveCohortStudyDescription",
+    color: "teal-darken-4"
   },
   [CASE_CONTROL]: {
     type: "statement",
-    title: "You chose Case Control Study.",
+    title: "Case Control Study",
     id: CASE_CONTROL,
     leaf: true,
     component: "CaseControlStudyDescription",
+    color: "teal-darken-4"
   },
   [CROSS_SECTIONAL_STUDY]: {
     type: "statement",
-    title: "You chose Cross Sectional Study.",
+    title: "Cross Sectional Study.",
     id: CROSS_SECTIONAL_STUDY,
     leaf: true,
     component: "CrossSectionalStudyDescription",
+    color: "teal-darken-4"
   },
 };
 
@@ -99,6 +104,7 @@ const descriptiveStudySubtree = {
     id: DESCRIPTIVE_STUDY,
     component: "DescriptiveStudyDescription",
     next: HOW_MANY_SUBJECTS,
+    color: 'green-darken-2'
   },
   [HOW_MANY_SUBJECTS]: {
     type: "question",
@@ -112,17 +118,19 @@ const descriptiveStudySubtree = {
   },
   [CASE_REPORT]: {
     type: "statement",
-    title: "You chose Case Report.",
+    title: "Case Report",
     id: CASE_REPORT,
     leaf: true,
     component: "CaseReportDescription",
+    color: "teal-darken-4"
   },
   [CASE_SERIES]: {
     type: "statement",
-    title: "You chose Case Series.",
+    title: "Case Series",
     id: CASE_SERIES,
     leaf: true,
     component: "CaseSeriesDescription",
+    color: "teal-darken-4"
   },
 };
 
@@ -154,7 +162,8 @@ export default {
     title: "Observational Study",
     id: OBSERVATIONAL_STUDY_ID,
     component: "ObservationalStudyDescription",
-    next: COMPARISON_GROUP
+    next: COMPARISON_GROUP,
+    color: 'green-lighten-2'
 
   },
   ...comparisonGroupSubtree
