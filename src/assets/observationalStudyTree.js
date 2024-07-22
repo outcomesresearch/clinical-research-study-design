@@ -8,7 +8,7 @@ const DIRECTION = "direction"
 const HOW_MANY_SUBJECTS = "subjectcount"
 const DESCRIPTIVE_STUDY = "descriptiveStudy";
 const CASE_REPORT = "casereport";
-const MORE_THAN_ONE = ">1Subject";
+const CASE_SERIES = "caseSeries";
 const PERSPECTIVE = "perspective"
 const PROSPECTIVE_COHORT_STUDY = "prospective"
 const RETROSPECTIVE_COHORT_STUDY = "retrospective"
@@ -107,7 +107,7 @@ const descriptiveStudySubtree = {
     component: "HowManySubjctsDescription",
     choices: [
       { answer: "1", next: CASE_REPORT },
-      { answer: "More than 1", next: MORE_THAN_ONE },
+      { answer: "More than 1", next: CASE_SERIES },
     ],
   },
   [CASE_REPORT]: {
@@ -117,10 +117,10 @@ const descriptiveStudySubtree = {
     leaf: true,
     component: "CaseReportDescription",
   },
-  [MORE_THAN_ONE]: {
+  [CASE_SERIES]: {
     type: "statement",
     title: "You chose Case Series.",
-    id: MORE_THAN_ONE,
+    id: CASE_SERIES,
     leaf: true,
     component: "CaseSeriesDescription",
   },

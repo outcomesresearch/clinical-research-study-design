@@ -92,7 +92,7 @@ import Descriptions from "./stepDescriptionComponents/index";
 export default {
   data() {
     return {
-      currentStep: "casereport",
+      currentStep: "caseSeries",
       path: [],
       steps: rootTree,
       nextStep: undefined,
