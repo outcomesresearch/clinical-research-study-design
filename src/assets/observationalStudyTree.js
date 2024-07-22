@@ -38,7 +38,7 @@ const analyticalStudySubtree = {
         option_description: "Outcome leads to exposure"
       },
       {
-        answer: "Exposure ≟ Outcome",
+        answer: "Exposure <?> Outcome",
         next: CROSS_SECTIONAL_STUDY,
         option_description: "Relationship between exposure and outcome is indeterminate"
       },
@@ -106,8 +106,8 @@ const descriptiveStudySubtree = {
     id: HOW_MANY_SUBJECTS,
     component: "HowManySubjctsDescription",
     choices: [
-      { answer: "1", next: CASE_REPORT },
-      { answer: "More than 1", next: CASE_SERIES },
+      { answer: "One subject", next: CASE_REPORT },
+      { answer: "More than one", next: CASE_SERIES },
     ],
   },
   [CASE_REPORT]: {

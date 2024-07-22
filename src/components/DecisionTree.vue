@@ -85,14 +85,14 @@
 
 <script>
 import StepCard from "./StepCard.vue";
-import rootTree from "../assets/rootTree";
+import rootTree, { ROOT } from "../assets/rootTree";
 import { findLongestPath } from "../utils";
 import Descriptions from "./stepDescriptionComponents/index";
 
 export default {
   data() {
     return {
-      currentStep: "caseSeries",
+      currentStep: ROOT,
       path: [],
       steps: rootTree,
       nextStep: undefined,

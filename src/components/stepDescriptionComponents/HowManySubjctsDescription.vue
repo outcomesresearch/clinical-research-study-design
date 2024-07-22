@@ -1,10 +1,7 @@
 <template>
   <p>
-    Cases (individuals with the outcome of interest) and controls (those without
-    the outcome) are identified, exposure status is determined for cases and
-    controls retrospectively, and the baseline characteristics of cases and
-    controls are compared to assess the association between exposure or
-    intervention and outcome.
+    Studies with one subject focus on a detailed examination of a single
+    patient, while those with multiple subjects observe trends and patterns.
   </p>
 </template>
 

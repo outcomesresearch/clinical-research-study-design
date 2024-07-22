@@ -182,8 +182,8 @@
                 </li>
                 <li>
                   Given the fixed sample size, the investigator can be confident
-                  where the true value for the difference in FIM between
-                  standard and new rehabilitation program lies (somewhere
+                  where the true value lies for the difference in FIM between
+                  standard and new rehabilitation program (somewhere
                   between 3.04 and 6.96). Given that a clinically meaningful
                   change in FIM score is 10 points, the observed between-group
                   difference of 5 points suggests only a moderate improvement

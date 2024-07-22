@@ -106,7 +106,7 @@
           </ul>
         </v-tabs-window-item>
         <v-tabs-window-item value="oxford">
-          <h4 class="my-4">Level of Evidence <strong>2c</strong>.</h4>
+          <h4 class="my-4">Level of Evidence <strong>4</strong>.</h4>
           <p>
             Level 4 evidence refers to case reports or case series that provide
             anecdotal or descriptive information about individual cases or a
@@ -156,19 +156,14 @@
               </ul>
             </li>
             <li>
-              <strong>Sample Size Calculation</strong>:
-              <ul>
-                <li>
-                  Given the exploratory nature of the case series design and the
-                  absence of a predetermined sample size calculation, our study
-                  aimed to include a convenience sample of pediatric patients
-                  who meet the inclusion criteria and consent to participate in
-                  the VRT program. As we gather data from these cases, we will
-                  compile and analyze the results to provide descriptive
-                  information about the impact of VRT on anxiety levels in
-                  pediatric patients.
-                </li>
-              </ul>
+              <strong>Sample Size Calculation</strong>: Given the exploratory
+              nature of the case series design and the absence of a
+              predetermined sample size calculation, our study aimed to include
+              a convenience sample of pediatric patients who meet the inclusion
+              criteria and consent to participate in the VRT program. As we
+              gather data from these cases, we will compile and analyze the
+              results to provide descriptive information about the impact of VRT
+              on anxiety levels in pediatric patients.
             </li>
           </ul>
         </v-tabs-window-item>
