@@ -7,7 +7,7 @@ const COMPARISON_GROUP = "comparison gruop"
 const DIRECTION = "direction"
 const HOW_MANY_SUBJECTS = "subjectcount"
 const DESCRIPTIVE_STUDY = "descriptiveStudy";
-const ONE_SUBJECT = "1Subject";
+const CASE_REPORT = "casereport";
 const MORE_THAN_ONE = ">1Subject";
 const PERSPECTIVE = "perspective"
 const PROSPECTIVE_COHORT_STUDY = "prospective"
@@ -106,14 +106,14 @@ const descriptiveStudySubtree = {
     id: HOW_MANY_SUBJECTS,
     component: "HowManySubjctsDescription",
     choices: [
-      { answer: "1", next: ONE_SUBJECT },
+      { answer: "1", next: CASE_REPORT },
       { answer: "More than 1", next: MORE_THAN_ONE },
     ],
   },
-  [ONE_SUBJECT]: {
+  [CASE_REPORT]: {
     type: "statement",
     title: "You chose Case Report.",
-    id: ONE_SUBJECT,
+    id: CASE_REPORT,
     leaf: true,
     component: "CaseReportDescription",
   },
