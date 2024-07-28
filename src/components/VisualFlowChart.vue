@@ -1,10 +1,8 @@
 <template>
-  <div class="flow-div-ound">
-    <div class="svg-container" id="flowchart-container">
-      <svg class="svg-content">
-        <g></g>
-      </svg>
-    </div>
+  <div class="svg-container" id="flowchart-container">
+    <svg class="svg-content">
+      <g></g>
+    </svg>
   </div>
 </template>
 
@@ -37,7 +35,6 @@ function responsivefy(svg) {
   // get width of container and resize svg to fit it
   function resize() {
     var targetWidth = parseInt(container.style("width"));
-    console.log({ targetWidth });
     svg.attr("width", targetWidth);
     svg.attr("height", Math.round(targetWidth / aspect));
   }
@@ -48,21 +45,19 @@ export default {
   data() {
     return {
       gdata: null,
-      scale: 0.75,
+      scale: 1,
       graph: null,
     };
   },
   created() {
     let myMap = new Map();
-    // console.log(Object.values(smalldata));
     let initialdata = Object.values(smalldata).map((a) => {
       // make sure to remap 'next' key as 'choices' for one-choice steps
       if (!a.choices && a.next) return { ...a, choices: [{ next: a.next }] };
       if (!a.choices && !a.next) return { ...a, choices: [] };
       return a;
     });
-    console.log(initialdata);
-    // return;
+
     for (const i in initialdata) {
       const { id, title, flowChartTitle, choices, detail, inputs, cssClass } =
         initialdata[i];
@@ -84,7 +79,6 @@ export default {
       if (this.gdata === null) return "no data";
       const graph = new dagred3.graphlib.Graph({}).setGraph({});
       for (const [key, value] of this.gdata.entries()) {
-        console.log({ value });
         graph.setNode(key, {
           label: value.title,
           // title: value.title,
@@ -93,7 +87,6 @@ export default {
           class: value.cssClass,
         });
         value.choices.forEach((choice) => {
-          console.log(choice);
           graph.setEdge(key, choice.next, {
             arrowhead: "normal",
             // arrowheadStyle: "fill: #fff",
@@ -106,7 +99,7 @@ export default {
       const svg = d3
         .select("div#flowchart-container")
         .select("svg")
-        .attr("width", 1500)
+        .attr("width", 1380)
         .attr("height", 800)
         .call(responsivefy);
 
@@ -184,6 +177,7 @@ export default {
 
 #flowchart-container {
   width: 100%;
+  max-width: 1500px;
 }
 
 .svg-container {

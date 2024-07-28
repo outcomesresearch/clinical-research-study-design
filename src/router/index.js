@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import IntroMessage from '@/views/IntroMessage.vue';
 import DecisionTree from '@/views/DecisionTree.vue';
+import VisualFlowChart from '@/components/VisualFlowChart.vue';
 
 const routes = [
     {
@@ -12,6 +13,11 @@ const routes = [
         path: '/decision-tree',
         name: 'DecisionTree',
         component: DecisionTree
+    },
+    {
+        path: '/flow-chart',
+        name: 'FlowChart',
+        component: VisualFlowChart
     },
     {
         path: '/',
