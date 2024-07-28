@@ -11,7 +11,7 @@
 <script>
 import * as d3 from "d3";
 import * as dagre from "dagre";
-import smalldata from "../assets/data.js";
+import smalldata from "../assets/rootTree";
 import * as dagred3 from "dagre-d3/dist/dagre-d3";
 
 function responsivefy(svg) {
@@ -54,10 +54,18 @@ export default {
   },
   created() {
     let myMap = new Map();
-    let initialdata = smalldata[0].reports;
+    // console.log(Object.values(smalldata));
+    let initialdata = Object.values(smalldata).map((a) => {
+      // make sure to remap 'next' key as 'choices' for one-choice steps
+      if (!a.choices && a.next) return { ...a, choices: [{ next: a.next }] };
+      if (!a.choices && !a.next) return { ...a, choices: [] };
+      return a;
+    });
+    console.log(initialdata);
+    // return;
     for (const i in initialdata) {
-      const { nodeId, Edge, detail, Inputs, cssClass } = initialdata[i];
-      myMap.set(nodeId, { edges: Edge, detail, inputs: Inputs, cssClass });
+      const { id, title, choices, detail, inputs, cssClass } = initialdata[i];
+      myMap.set(id, { title, choices, detail, inputs, cssClass });
     }
     this.gdata = myMap;
   },
@@ -69,19 +77,21 @@ export default {
       if (this.gdata === null) return "no data";
       const graph = new dagred3.graphlib.Graph({}).setGraph({});
       for (const [key, value] of this.gdata.entries()) {
-        if (key === "Cross-Sectional Study") console.log({ value });
+        console.log({ value });
         graph.setNode(key, {
-          label: key,
-          Edge: value.edges,
+          label: value.title,
+          // title: value.title,
+          choices: value.choices,
           detail: value.detail,
           class: value.cssClass,
         });
-        value.edges.forEach((edge) => {
-          graph.setEdge(key, edge.node, {
+        value.choices.forEach((choice) => {
+          console.log(choice);
+          graph.setEdge(key, choice.next, {
             arrowhead: "normal",
             // arrowheadStyle: "fill: #fff",
             curve: d3.curveBasis,
-            label: edge.label,
+            label: choice.answer,
           });
         });
       }
@@ -105,11 +115,9 @@ export default {
 
       svg
         .selectAll("g.node")
-        .attr("data-detail", function (v) {
-          return graph.node(v).detail;
-        })
-        .on("mouseenter", (d, i) => {
-          this.highlightEdges(d, i);
+        .attr("data-detail", (v) => graph.node(v).detail)
+        .on("mouseenter", () => {
+          // this.highlightEdges(d, i);
           tooltip.style("visibility", "visible");
         })
         .on("mousemove", function () {
@@ -137,7 +145,7 @@ export default {
       //   this.graph = inner;
     },
     highlightEdges: function (d) {
-      let children = this.gdata.get(d).edges.map((A) => A.node);
+      let children = this.gdata.get(d).choices.map((A) => A.next);
       let parents = this.gdata.get(d).inputs;
 
       function setClass(elementSelector, className) {

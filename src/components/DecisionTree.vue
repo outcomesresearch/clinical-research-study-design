@@ -96,7 +96,8 @@
 
 <script>
 import StepCard from "./StepCard.vue";
-import rootTree, { ROOT } from "../assets/rootTree";
+import rootTree from "../assets/rootTree";
+import { ROOT } from "../assets/ids";
 import { findLongestPath } from "../utils";
 import Descriptions from "./stepDescriptionComponents/index";
 

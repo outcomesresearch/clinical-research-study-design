@@ -1,10 +1,13 @@
-export const EXPERIMENTAL_STUDY_ID = "experimentalStudy";
-const RANDOMIZED_CONTROLLED_TRIAL = "randomized-controlled-trial"
-const NONRANDOMIZED_CONTROLLED_TRIAL = "non_randomized-controlled-trial"
-const RANDOM_ASSIGNMENT = "random assignment"
-const NEW_TREATMENT_BETTER = "newtreatment better"
-const SUPERIORITY_TRIAL = 'superiority trial'
-const EQUIVALENCE_TRIAL = 'equivalence trial'
+import {
+  ROOT,
+  EXPERIMENTAL_STUDY_ID,
+  RANDOMIZED_CONTROLLED_TRIAL,
+  NONRANDOMIZED_CONTROLLED_TRIAL,
+  RANDOM_ASSIGNMENT,
+  NEW_TREATMENT_BETTER,
+  SUPERIORITY_TRIAL,
+  EQUIVALENCE_TRIAL,
+} from "./ids"
 
 export default {
   [EXPERIMENTAL_STUDY_ID]: {
@@ -13,10 +16,12 @@ export default {
     id: EXPERIMENTAL_STUDY_ID,
     component: "ExperimentalStudyDescription",
     next: RANDOM_ASSIGNMENT,
-    color: "blue-lighten-2"
+    color: "blue-lighten-2",
+    inputs: [ROOT]
   },
   [RANDOM_ASSIGNMENT]: {
     type: "question",
+    id: RANDOM_ASSIGNMENT,
     title: "Were participants randomly assigned?",
     component: "RandomAllocationDescription",
     choices: [
@@ -31,6 +36,7 @@ export default {
         option_description: "Participants were not randomly assigned"
       },
     ],
+    inputs: [EXPERIMENTAL_STUDY_ID]
   },
   [RANDOMIZED_CONTROLLED_TRIAL]: {
     type: "statement",
@@ -38,10 +44,12 @@ export default {
     title: "Randomized Clinical Trial",
     component: "RandomizedControlledTrialDescription",
     next: NEW_TREATMENT_BETTER,
-    color: "blue-darken-2"
+    color: "blue-darken-2",
+    inputs: [RANDOM_ASSIGNMENT]
   },
   [NEW_TREATMENT_BETTER]: {
     type: "question",
+    id: NEW_TREATMENT_BETTER,
     title: "Is the aim of the study to demonstrate a new treatment is significantly better than existing treatment or placebo?",
     component: "NewTreatmentBetter",
     choices: [
@@ -56,6 +64,7 @@ export default {
         // option_description: "Participants were not randomly assigned"
       },
     ],
+    inputs: [RANDOMIZED_CONTROLLED_TRIAL],
   },
   [SUPERIORITY_TRIAL]: {
     type: "statement",
@@ -63,7 +72,8 @@ export default {
     title: "Superiority Trial",
     leaf: true,
     component: "SuperiorityTrial",
-    color: "indigo-darken-4"
+    color: "indigo-darken-4",
+    inputs: [NEW_TREATMENT_BETTER]
   },
   [EQUIVALENCE_TRIAL]: {
     type: "statement",
@@ -71,7 +81,8 @@ export default {
     title: "Equivalence or Non-Inferiority Trial",
     leaf: true,
     component: "EquivalenceTrial",
-    color: "indigo-darken-4"
+    color: "indigo-darken-4",
+    inputs: [NEW_TREATMENT_BETTER]
   },
   [NONRANDOMIZED_CONTROLLED_TRIAL]: {
     type: "statement",
@@ -79,6 +90,7 @@ export default {
     title: "Non-randomized Clinical Trial",
     leaf: true,
     component: "NonRandomizedControlledTrialDescription",
-    color: "indigo-darken-4"
+    color: "indigo-darken-4",
+    inputs: [RANDOM_ASSIGNMENT]
   },
 };

@@ -7,6 +7,7 @@
         <outcomes-navbar />
         <div id="app" class="wrapper-for-outer-flexbox">
           <div class="app-container">
+            <visual-flow-chart />
             <intro-card v-if="inIntro" @started="setStarted" />
             <decision-tree v-else @started="(e) => setStarted(e)" />
           </div>
@@ -25,13 +26,14 @@
 <script>
 import DecisionTree from "./components/DecisionTree.vue";
 import IntroCard from "./components/IntroCard.vue";
-// import VisualFlowChart from "./components/VisualFlowChart.vue";
+import VisualFlowChart from "./components/VisualFlowChart.vue";
 
 export default {
   name: "App",
   components: {
     DecisionTree,
     IntroCard,
+    VisualFlowChart,
   },
   methods: {
     setStarted(isTriggeringIntro = false) {

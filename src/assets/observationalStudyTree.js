@@ -1,17 +1,19 @@
-export const OBSERVATIONAL_STUDY_ID = "observationalStudy";
-
-const ANALYTICAL_STUDY = "analyticalStudy";
-const CASE_CONTROL = "outcomeExposure";
-const CROSS_SECTIONAL_STUDY = "outcomeExposureSameTIme";
-const COMPARISON_GROUP = "comparison gruop"
-const DIRECTION = "direction"
-const HOW_MANY_SUBJECTS = "subjectcount"
-const DESCRIPTIVE_STUDY = "descriptiveStudy";
-const CASE_REPORT = "casereport";
-const CASE_SERIES = "caseSeries";
-const PERSPECTIVE = "perspective"
-const PROSPECTIVE_COHORT_STUDY = "prospective"
-const RETROSPECTIVE_COHORT_STUDY = "retrospective"
+import {
+  ROOT,
+  OBSERVATIONAL_STUDY_ID,
+  ANALYTICAL_STUDY,
+  CASE_CONTROL,
+  CROSS_SECTIONAL_STUDY,
+  COMPARISON_GROUP,
+  DIRECTION,
+  HOW_MANY_SUBJECTS,
+  DESCRIPTIVE_STUDY,
+  CASE_REPORT,
+  CASE_SERIES,
+  PERSPECTIVE,
+  PROSPECTIVE_COHORT_STUDY,
+  RETROSPECTIVE_COHORT_STUDY
+} from "./ids"
 
 const analyticalStudySubtree = {
   [ANALYTICAL_STUDY]: {
@@ -20,7 +22,8 @@ const analyticalStudySubtree = {
     id: ANALYTICAL_STUDY,
     component: "AnalyticalStudyDescription",
     next: DIRECTION,
-    color: 'green-darken-2'
+    color: 'green-darken-2',
+    inputs: [ROOT]
   },
   [DIRECTION]: {
     type: "question",
@@ -69,7 +72,8 @@ const analyticalStudySubtree = {
     id: PROSPECTIVE_COHORT_STUDY,
     leaf: true,
     component: "ProspectiveCohortStudyDescription",
-    color: "teal-darken-4"
+    color: "teal-darken-4",
+    choices: []
   },
   [RETROSPECTIVE_COHORT_STUDY]: {
     type: "statement",
@@ -77,7 +81,8 @@ const analyticalStudySubtree = {
     id: RETROSPECTIVE_COHORT_STUDY,
     leaf: true,
     component: "RetrospectiveCohortStudyDescription",
-    color: "teal-darken-4"
+    color: "teal-darken-4",
+    choices: []
   },
   [CASE_CONTROL]: {
     type: "statement",
@@ -85,7 +90,8 @@ const analyticalStudySubtree = {
     id: CASE_CONTROL,
     leaf: true,
     component: "CaseControlStudyDescription",
-    color: "teal-darken-4"
+    color: "teal-darken-4",
+    choices: []
   },
   [CROSS_SECTIONAL_STUDY]: {
     type: "statement",
@@ -93,7 +99,8 @@ const analyticalStudySubtree = {
     id: CROSS_SECTIONAL_STUDY,
     leaf: true,
     component: "CrossSectionalStudyDescription",
-    color: "teal-darken-4"
+    color: "teal-darken-4",
+    choices: []
   },
 };
 
@@ -122,7 +129,7 @@ const descriptiveStudySubtree = {
     id: CASE_REPORT,
     leaf: true,
     component: "CaseReportDescription",
-    color: "teal-darken-4"
+    color: "teal-darken-4",
   },
   [CASE_SERIES]: {
     type: "statement",
@@ -130,7 +137,7 @@ const descriptiveStudySubtree = {
     id: CASE_SERIES,
     leaf: true,
     component: "CaseSeriesDescription",
-    color: "teal-darken-4"
+    color: "teal-darken-4",
   },
 };
 
