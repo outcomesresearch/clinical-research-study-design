@@ -52,6 +52,7 @@ const analyticalStudySubtree = {
   [PERSPECTIVE]: {
     type: "question",
     title: "What is the perspective of the researcher relative to the data under study?",
+    flowChartTitle: "What is the perspective of the\nresearcher relative to the data under study?",
     id: PERSPECTIVE,
     component: "PerspectiveQuestion",
     inputs: [DIRECTION],

@@ -64,8 +64,15 @@ export default {
     console.log(initialdata);
     // return;
     for (const i in initialdata) {
-      const { id, title, choices, detail, inputs, cssClass } = initialdata[i];
-      myMap.set(id, { title, choices, detail, inputs, cssClass });
+      const { id, title, flowChartTitle, choices, detail, inputs, cssClass } =
+        initialdata[i];
+      myMap.set(id, {
+        title: flowChartTitle || title,
+        choices,
+        detail,
+        inputs,
+        cssClass,
+      });
     }
     this.gdata = myMap;
   },

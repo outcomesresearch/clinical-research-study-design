@@ -51,6 +51,7 @@ export default {
     type: "question",
     id: NEW_TREATMENT_BETTER,
     title: "Is the aim of the study to demonstrate a new treatment is significantly better than existing treatment or placebo?",
+    flowChartTitle: "Is the aim of the study to demonstrate\na new treatment is significantly better than\nexisting treatment or placebo?",
     component: "NewTreatmentBetter",
     choices: [
       {
@@ -79,6 +80,7 @@ export default {
     type: "statement",
     id: EQUIVALENCE_TRIAL,
     title: "Equivalence or Non-Inferiority Trial",
+    flowChartTitle: "Equivalence or\nNon-Inferiority Trial",
     leaf: true,
     component: "EquivalenceTrial",
     color: "indigo-darken-4",
