@@ -10,7 +10,9 @@
         ></v-progress-linear>
         <v-card-item>
           <v-card-title className="v-card-title card-title-bar">
-            <span className="mr-5">{{ currentQuestion.title }}</span>
+            <span className="mr-5" :style="{ 'word-wrap': 'break-spaces' }">{{
+              currentQuestion.title
+            }}</span>
             <span className="chips" v-if="breadcrumbs.length">
               <v-chip
                 v-for="chip in breadcrumbs"
@@ -185,6 +187,7 @@ export default {
 
 .card-title-bar {
   display: flex;
+  white-space: break-spaces;
 }
 
 .card-title-bar > .chips {
