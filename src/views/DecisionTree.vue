@@ -53,7 +53,7 @@
             v-else
             text="Back to Intro"
             variant="text"
-            @click="$emit('started', true)"
+            @click="$router.push({ name: 'IntroMessage' })"
           />
           <v-btn
             v-if="this.steps[this.currentStep].choices"
@@ -95,11 +95,11 @@
 </template>
 
 <script>
-import StepCard from "./StepCard.vue";
+import StepCard from "../components/StepCard.vue";
 import rootTree from "../assets/rootTree";
 import { ROOT } from "../assets/ids";
 import { findLongestPath } from "../utils";
-import Descriptions from "./stepDescriptionComponents/index";
+import Descriptions from "../components/stepDescriptionComponents/index";
 
 export default {
   data() {

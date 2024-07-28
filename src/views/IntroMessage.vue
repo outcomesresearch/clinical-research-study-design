@@ -23,7 +23,7 @@
         text="Begin"
         variant="text"
         :style="{ marginLeft: 'auto' }"
-        @click="$emit('started')"
+        @click="$router.push({ name: 'DecisionTree' })"
       />
     </v-card-actions>
   </v-card>

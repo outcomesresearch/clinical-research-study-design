@@ -1,5 +1,3 @@
-<!-- src/App.vue -->
-
 <template>
   <v-app>
     <v-main>
@@ -7,11 +5,8 @@
         <outcomes-navbar />
         <div id="app" class="wrapper-for-outer-flexbox">
           <div class="app-container">
-            <!-- <visual-flow-chart /> -->
-            <intro-card v-if="inIntro" @started="setStarted" />
-            <decision-tree v-else @started="(e) => setStarted(e)" />
+            <router-view />
           </div>
-          <router-view></router-view>
           <div class="footnote-container">
             <span class="footnote text-grey-lighten-1"
               >Modified from Grimes and Shulz, Lancet 2002; 359: 57–61
@@ -25,25 +20,10 @@
 </template>
 
 <script>
-import DecisionTree from "./components/DecisionTree.vue";
-import IntroCard from "./components/IntroCard.vue";
-// import VisualFlowChart from "./components/VisualFlowChart.vue";
-
 export default {
   name: "App",
-  components: {
-    DecisionTree,
-    IntroCard,
-    // VisualFlowChart,
-  },
-  methods: {
-    setStarted(isTriggeringIntro = false) {
-      this.inIntro = isTriggeringIntro;
-    },
-  },
   data() {
     return {
-      inIntro: true,
       copyright: `© 2024 Washington University School of Medicine, St. Louis, Missouri`,
     };
   },

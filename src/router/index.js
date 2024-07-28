@@ -1,23 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
-import About from '../views/About.vue';
+import IntroMessage from '@/views/IntroMessage.vue';
+import DecisionTree from '@/views/DecisionTree.vue';
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: About
-  }
+    {
+        path: '/intro',
+        name: 'IntroMessage',
+        component: IntroMessage
+    },
+    {
+        path: '/decision-tree',
+        name: 'DecisionTree',
+        component: DecisionTree
+    },
+    {
+        path: '/',
+        redirect: '/intro'
+    },
+    {
+        path: '/:catchAll(.*)',
+        redirect: '/intro'
+    }
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+    history: createWebHistory(process.env.BASE_URL),
+    routes
 });
 
 export default router;
