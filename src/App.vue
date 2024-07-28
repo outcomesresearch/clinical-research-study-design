@@ -11,6 +11,7 @@
             <intro-card v-if="inIntro" @started="setStarted" />
             <decision-tree v-else @started="(e) => setStarted(e)" />
           </div>
+          <router-view></router-view>
           <div class="footnote-container">
             <span class="footnote text-grey-lighten-1"
               >Modified from Grimes and Shulz, Lancet 2002; 359: 57–61

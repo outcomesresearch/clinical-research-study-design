@@ -10,13 +10,14 @@
   "dependencies": {
     "@mdi/font": "5.9.55",
     "core-js": "^3.8.3",
-    "roboto-fontface": "*",
-    "shared-code": "git+https://github.com/outcomesresearch/shared-code.git",
-    "vue": "^3.2.13",
-    "vuetify": "^3.0.0-beta.0",
     "d3": "^5.9.2",
     "dagre": "^0.8.4",
     "dagre-d3": "^0.6.3",
+    "roboto-fontface": "*",
+    "shared-code": "git+https://github.com/outcomesresearch/shared-code.git",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.13",
+    "vuetify": "^3.0.0-beta.0",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {
