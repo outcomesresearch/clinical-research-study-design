@@ -116,7 +116,7 @@ ul > li {
   margin: 10px 0;
 }
 
-p {
+.app-container p {
   padding-bottom: 20px;
 }
 
