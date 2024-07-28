@@ -23,13 +23,14 @@ const analyticalStudySubtree = {
     component: "AnalyticalStudyDescription",
     next: DIRECTION,
     color: 'green-darken-2',
-    inputs: [ROOT]
+    inputs: [COMPARISON_GROUP]
   },
   [DIRECTION]: {
     type: "question",
     title: "What is the direction of research?",
     id: DIRECTION,
     component: "DirectionDescription",
+    inputs: [ANALYTICAL_STUDY],
     choices: [
       {
         answer: "Exposure → Outcome",
@@ -53,6 +54,7 @@ const analyticalStudySubtree = {
     title: "What is the perspective of the researcher relative to the data under study?",
     id: PERSPECTIVE,
     component: "PerspectiveQuestion",
+    inputs: [DIRECTION],
     choices: [
       {
         answer: "Prospective",
@@ -71,6 +73,7 @@ const analyticalStudySubtree = {
     title: "Prospective Cohort Study",
     id: PROSPECTIVE_COHORT_STUDY,
     leaf: true,
+    inputs: [PERSPECTIVE],
     component: "ProspectiveCohortStudyDescription",
     color: "teal-darken-4",
     choices: []
@@ -80,6 +83,7 @@ const analyticalStudySubtree = {
     title: "Retrospective Cohort Study",
     id: RETROSPECTIVE_COHORT_STUDY,
     leaf: true,
+    inputs: [PERSPECTIVE],
     component: "RetrospectiveCohortStudyDescription",
     color: "teal-darken-4",
     choices: []
@@ -89,6 +93,7 @@ const analyticalStudySubtree = {
     title: "Case Control Study",
     id: CASE_CONTROL,
     leaf: true,
+    inputs: [DIRECTION],
     component: "CaseControlStudyDescription",
     color: "teal-darken-4",
     choices: []
@@ -98,6 +103,7 @@ const analyticalStudySubtree = {
     title: "Cross Sectional Study.",
     id: CROSS_SECTIONAL_STUDY,
     leaf: true,
+    inputs: [DIRECTION],
     component: "CrossSectionalStudyDescription",
     color: "teal-darken-4",
     choices: []
@@ -111,6 +117,7 @@ const descriptiveStudySubtree = {
     id: DESCRIPTIVE_STUDY,
     component: "DescriptiveStudyDescription",
     next: HOW_MANY_SUBJECTS,
+    inputs: [COMPARISON_GROUP],
     color: 'green-darken-2'
   },
   [HOW_MANY_SUBJECTS]: {
@@ -118,6 +125,7 @@ const descriptiveStudySubtree = {
     title: "How many subjects were there?",
     id: HOW_MANY_SUBJECTS,
     component: "HowManySubjctsDescription",
+    inputs: [DESCRIPTIVE_STUDY],
     choices: [
       { answer: "One subject", next: CASE_REPORT },
       { answer: "More than one", next: CASE_SERIES },
@@ -128,6 +136,7 @@ const descriptiveStudySubtree = {
     title: "Case Report",
     id: CASE_REPORT,
     leaf: true,
+    inputs: [HOW_MANY_SUBJECTS],
     component: "CaseReportDescription",
     color: "teal-darken-4",
   },
@@ -136,16 +145,29 @@ const descriptiveStudySubtree = {
     title: "Case Series",
     id: CASE_SERIES,
     leaf: true,
+    inputs: [HOW_MANY_SUBJECTS],
     component: "CaseSeriesDescription",
     color: "teal-darken-4",
   },
 };
 
-const comparisonGroupSubtree = {
+
+export default {
+  [OBSERVATIONAL_STUDY_ID]: {
+    type: "statement",
+    title: "Observational Study",
+    id: OBSERVATIONAL_STUDY_ID,
+    component: "ObservationalStudyDescription",
+    next: COMPARISON_GROUP,
+    color: 'green-lighten-2',
+    inputs: [ROOT]
+  },
   [COMPARISON_GROUP]: {
     type: "question",
+    id: COMPARISON_GROUP,
     title: "Was there a comparison group?",
     component: "ComparisonGroupDescription",
+    inputs: [OBSERVATIONAL_STUDY_ID],
     choices: [
       {
         answer: "Yes",
@@ -161,17 +183,4 @@ const comparisonGroupSubtree = {
   },
   ...analyticalStudySubtree,
   ...descriptiveStudySubtree,
-}
-
-export default {
-  [OBSERVATIONAL_STUDY_ID]: {
-    type: "statement",
-    title: "Observational Study",
-    id: OBSERVATIONAL_STUDY_ID,
-    component: "ObservationalStudyDescription",
-    next: COMPARISON_GROUP,
-    color: 'green-lighten-2'
-
-  },
-  ...comparisonGroupSubtree
 };
