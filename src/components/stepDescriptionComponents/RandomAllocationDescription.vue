@@ -8,7 +8,13 @@
       groups, allowing for a fair comparison.
     </p>
     <v-card class="mt-5">
-      <v-tabs v-model="tab" bg-color="gray" grow class="mb-3">
+      <v-tabs
+        v-model="tab"
+        bg-color="gray"
+        grow
+        :direction="isMobile ? 'vertical' : 'horizontal'"
+        class="mb-3"
+      >
         <v-tab value="commonMethods">Common Randomization Methods</v-tab>
         <v-tab value="strengths">Strengths</v-tab>
         <v-tab value="weaknesses">Weaknesses</v-tab>
@@ -66,12 +72,23 @@
 </template>
 
 <script>
+import { ref, provide } from "vue";
+import { useResponsive } from "../../mixins/responsiveMixin"; // Adjust the path as needed
+
 export default {
   name: "RandomizationInfo",
-  data: () => ({
-    tab: null,
-  }),
+  setup() {
+    const { windowWidth, isMobile } = useResponsive();
+    provide("isMobile", isMobile);
+
+    const tab = ref(0); // Initialize the tab value
+
+    return {
+      windowWidth,
+      isMobile,
+      tab,
+    };
+  },
 };
 </script>
-
 <style scoped></style>
