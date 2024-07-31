@@ -12,7 +12,10 @@ const routes = [
     {
         path: '/decision-tree',
         name: 'DecisionTree',
-        props: (route) => ({ step: route.query.step }),
+        props: (route) => ({
+            step: route.query.step,
+            tab: route.query.tab
+        }),
         component: DecisionTree
     },
     {

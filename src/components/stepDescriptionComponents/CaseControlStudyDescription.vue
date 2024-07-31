@@ -15,14 +15,14 @@
         class="mb-5"
         :direction="isMobile ? 'vertical' : 'horizontal'"
       >
-        <v-tab value="strengths">Strengths</v-tab>
-        <v-tab value="weaknesses">Weaknesses</v-tab>
-        <v-tab value="criticalAppraisal">Crticial Appraisal</v-tab>
-        <v-tab value="oxford">Oxford CEBM Level of Evidence</v-tab>
-        <v-tab value="example">Example Study</v-tab>
+        <v-tab :value="STRENGTHS">Strengths</v-tab>
+        <v-tab :value="WEAKNESSES">Weaknesses</v-tab>
+        <v-tab :value="CRITICAL_APPRAISAL">Critical Appraisal</v-tab>
+        <v-tab :value="LEVEL_OF_EVIDENCE">Oxford CEBM Level of Evidence</v-tab>
+        <v-tab :value="EXAMPLE">Example Study</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="strengths">
+        <v-tabs-window-item :value="STRENGTHS">
           <ol>
             <li>
               <strong>Efficiency</strong>: Case-control studies are often more
@@ -48,7 +48,7 @@
             </li>
           </ol>
         </v-tabs-window-item>
-        <v-tabs-window-item value="weaknesses">
+        <v-tabs-window-item :value="WEAKNESSES">
           <ol>
             <li>
               <strong>Selection of an appropriate control group</strong>:
@@ -95,7 +95,7 @@
             </li>
           </ol>
         </v-tabs-window-item>
-        <v-tabs-window-item value="criticalAppraisal">
+        <v-tabs-window-item :value="CRITICAL_APPRAISAL">
           <p>
             To critically appraise case-control studies, consider factors such
             as selection of controls, adequacy of data on exposure, adequate
@@ -165,7 +165,7 @@
             </li>
           </ul>
         </v-tabs-window-item>
-        <v-tabs-window-item value="oxford">
+        <v-tabs-window-item :value="LEVEL_OF_EVIDENCE">
           <h4 class="my-4">Level of Evidence <strong>3b</strong>.</h4>
           <p>
             Level 3 evidence is obtained from well-designed case-control or
@@ -184,7 +184,7 @@
             higher-level evidence gathering.
           </p>
         </v-tabs-window-item>
-        <v-tabs-window-item value="example">
+        <v-tabs-window-item :value="EXAMPLE">
           <h4 class="my-4">
             Is there a significant association between smoking and the risk of
             developing lung cancer?
@@ -280,8 +280,16 @@
 </template>
 
 <script>
-import { ref, provide } from "vue";
+import { provide } from "vue";
+import { useTabSync } from "@/mixins/useTabSync"; // Adjust
 import { useResponsive } from "../../mixins/responsiveMixin"; // Adjust the path as needed
+import {
+  EXAMPLE,
+  LEVEL_OF_EVIDENCE,
+  WEAKNESSES,
+  STRENGTHS,
+  CRITICAL_APPRAISAL,
+} from "../../assets/ids";
 
 export default {
   setup() {
@@ -289,12 +297,17 @@ export default {
     provide("windowWidth", windowWidth);
     provide("isMobile", isMobile);
 
-    const tab = ref(0); // Initialize the tab value
+    const { tab } = useTabSync(STRENGTHS); // Pass the default tab value
 
     return {
       windowWidth,
       isMobile,
       tab,
+      EXAMPLE,
+      LEVEL_OF_EVIDENCE,
+      WEAKNESSES,
+      STRENGTHS,
+      CRITICAL_APPRAISAL,
     };
   },
 };

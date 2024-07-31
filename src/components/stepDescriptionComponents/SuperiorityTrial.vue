@@ -17,14 +17,14 @@
         class="mb-3"
         :direction="isMobile ? 'vertical' : 'horizontal'"
       >
-        <v-tab value="strengths">Strengths</v-tab>
-        <v-tab value="weaknesses">Weaknesses</v-tab>
-        <v-tab value="criticalAppraisal">Cricial Appraisal</v-tab>
-        <v-tab value="oxford">Oxford CEBM Level of Evidence</v-tab>
-        <v-tab value="example">Example Study</v-tab>
+        <v-tab :value="STRENGTHS">Strengths</v-tab>
+        <v-tab :value="WEAKNESSES">Weaknesses</v-tab>
+        <v-tab :value="CRITICAL_APPRAISAL">Critical Appraisal</v-tab>
+        <v-tab :value="LEVEL_OF_EVIDENCE">Oxford CEBM Level of Evidence</v-tab>
+        <v-tab :value="EXAMPLE">Example Study</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="strengths">
+        <v-tabs-window-item :value="STRENGTHS">
           <ol>
             <li>
               <strong>Clear objective</strong>: The primary objective of
@@ -46,7 +46,7 @@
             </li>
           </ol>
         </v-tabs-window-item>
-        <v-tabs-window-item value="weaknesses">
+        <v-tabs-window-item :value="WEAKNESSES">
           <ol>
             <li>
               <strong>High sample size requirements</strong>: Superiority trials
@@ -111,7 +111,7 @@
             </li>
           </ol>
         </v-tabs-window-item>
-        <v-tabs-window-item value="oxford">
+        <v-tabs-window-item :value="LEVEL_OF_EVIDENCE">
           <h4 class="my-4">Level of Evidence <strong>1b</strong>.</h4>
           <p>
             Level 1b evidence refers to evidence derived from well-conducted
@@ -130,7 +130,7 @@
             for clinical decision-making.
           </p>
         </v-tabs-window-item>
-        <v-tabs-window-item value="example">
+        <v-tabs-window-item :value="EXAMPLE">
           <h4 class="my-4">
             Is the new immunotherapy drug superior to methotrexate, the current
             standard treatment in improving clinical outcomes in patients with
@@ -182,22 +182,34 @@
 </template>
 
 <script>
-import { ref, provide } from "vue";
+import { provide } from "vue";
+import { useTabSync } from "@/mixins/useTabSync"; // Adjust
 import { useResponsive } from "../../mixins/responsiveMixin"; // Adjust the path as needed
+import {
+  EXAMPLE,
+  LEVEL_OF_EVIDENCE,
+  WEAKNESSES,
+  STRENGTHS,
+  CRITICAL_APPRAISAL,
+} from "../../assets/ids";
 
 export default {
-  name: "RandomizedControlledTrialDescription",
   setup() {
     const { windowWidth, isMobile } = useResponsive();
     provide("windowWidth", windowWidth);
     provide("isMobile", isMobile);
 
-    const tab = ref(0); // Initialize the tab value
+    const { tab } = useTabSync(STRENGTHS); // Pass the default tab value
 
     return {
       windowWidth,
       isMobile,
       tab,
+      EXAMPLE,
+      LEVEL_OF_EVIDENCE,
+      WEAKNESSES,
+      STRENGTHS,
+      CRITICAL_APPRAISAL,
     };
   },
 };
