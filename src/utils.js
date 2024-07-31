@@ -1,3 +1,5 @@
+import rootTree from "./assets/rootTree"
+
 export function findLongestPath(currentNode, steps) {
   const nodeConfig = { ...steps[currentNode] };
 
@@ -26,4 +28,26 @@ export function findLongestPath(currentNode, steps) {
   }
 
   return maxLength;
+}
+
+
+export function findPreviousSteps(currentStepName) {
+  const currentNode = rootTree[currentStepName];
+  if (!currentNode) {
+    console.error("Invalid step name:", currentStepName);
+    return [];
+  }
+
+  // Base case: if no inputs are present or the inputs array is empty
+  if (!currentNode.inputs || currentNode.inputs.length === 0) {
+    return [currentNode.id];
+  }
+
+  // Recursive case: process each input to find further previous steps
+  const previousSteps = currentNode.inputs.flatMap(inputName =>
+    findPreviousSteps(inputName)
+  );
+
+  // Include the current step along with all previous steps found recursively
+  return [...previousSteps, currentStepName];
 }

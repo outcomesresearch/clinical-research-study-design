@@ -100,10 +100,11 @@
 import StepCard from "../components/StepCard.vue";
 import rootTree from "../assets/rootTree";
 import { ROOT } from "../assets/ids";
-import { findLongestPath } from "../utils";
+import { findLongestPath, findPreviousSteps } from "../utils";
 import Descriptions from "../components/stepDescriptionComponents/index";
 
 export default {
+  props: ["step"],
   data() {
     return {
       currentStep: ROOT,
@@ -115,6 +116,24 @@ export default {
   components: {
     StepCard,
     ...Descriptions,
+  },
+  watch: {
+    // Watch for changes in currentStep to update the URL
+    currentStep(newStep, oldStep) {
+      if (newStep !== oldStep) {
+        this.$router
+          .push({ path: "/decision-tree", query: { step: newStep } })
+          .catch(console.error);
+      }
+    },
+  },
+  created() {
+    // When component is created, initialize the current step from the URL or default
+    if (this.step) {
+      this.currentStep = this.step;
+      //Actually need to create the path NOT including the current step
+      this.path = findPreviousSteps(this.steps[this.currentStep].inputs[0]);
+    }
   },
   computed: {
     currentQuestion() {
