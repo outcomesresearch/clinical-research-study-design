@@ -82,10 +82,6 @@ export default {
   padding-bottom: 5px;
 }
 
-.v-list-item {
-  padding-inline: 0px !important;
-}
-
 ol,
 ul {
   /* list-style: initial; */

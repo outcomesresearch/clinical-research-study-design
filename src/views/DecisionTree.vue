@@ -10,9 +10,26 @@
         ></v-progress-linear>
         <v-card-item>
           <v-card-title className="v-card-title card-title-bar">
-            <span className="mr-5" :style="{ 'word-wrap': 'break-spaces' }">{{
-              currentQuestion.title
-            }}</span>
+            <div :style="{ display: 'flex', flexGrow: 1 }">
+              <span
+                className="mr-5"
+                :style="{
+                  wordWrap: 'break-spaces',
+                  flexGrow: 1,
+                  marginRight: 'auto',
+                }"
+              >
+                {{ currentQuestion.title }}
+              </span>
+              <span
+                className="hideOnDesktop"
+                :style="{
+                  maxWidth: 'fit-content',
+                }"
+              >
+                <DropdownMenu />
+              </span>
+            </div>
             <span className="chips" v-if="breadcrumbs.length">
               <v-chip
                 v-for="chip in breadcrumbs"
@@ -21,6 +38,9 @@
                 tonal
                 >{{ chip.title }}</v-chip
               >
+            </span>
+            <span className="showOnDesktop">
+              <DropdownMenu />
             </span>
           </v-card-title>
         </v-card-item>
@@ -102,6 +122,7 @@ import rootTree from "../assets/rootTree";
 import { ROOT } from "../assets/ids";
 import { findLongestPath, findPreviousSteps } from "../utils";
 import Descriptions from "../components/stepDescriptionComponents/index";
+import DropdownMenu from "../components/DropdownMenu.vue";
 
 export default {
   props: ["step"],
@@ -115,6 +136,7 @@ export default {
   },
   components: {
     StepCard,
+    DropdownMenu,
     ...Descriptions,
   },
   watch: {
@@ -215,6 +237,7 @@ export default {
 .card-title-bar {
   display: flex;
   white-space: break-spaces;
+  gap: 10px;
 }
 
 .card-title-bar > .chips {
@@ -224,10 +247,26 @@ export default {
   gap: 10px;
 }
 
+.showOnDesktop {
+  display: inline-block;
+}
+
+.hideOnDesktop {
+  display: none;
+}
+
 @media only screen and (max-width: 800px) {
   .card-title-bar {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .showOnDesktop {
+    display: none;
+  }
+
+  .hideOnDesktop {
+    display: inline-block;
   }
 
   .card-title-bar > .chips {
@@ -245,3 +284,4 @@ export default {
   }
 }
 </style>
+../components/DropdownMenu.vue
