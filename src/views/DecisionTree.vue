@@ -181,6 +181,11 @@ export default {
 </script>
 
 <style scoped>
+#app .app-container .container {
+  padding: 12px !important;
+  margin: 100px;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -188,9 +193,6 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-}
-.container {
-  padding: 12px;
 }
 
 .progressBarTag {

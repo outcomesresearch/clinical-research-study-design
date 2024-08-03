@@ -34,3 +34,10 @@ export default {
   name: "IntroCard",
 };
 </script>
+
+<style scoped>
+#app .app-container .container {
+  padding: 12px !important;
+  margin: 100px;
+}
+</style>
