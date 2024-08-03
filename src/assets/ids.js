@@ -19,10 +19,3 @@ export const CASE_SERIES = "caseSeries";
 export const PERSPECTIVE = "cohortPerspective"
 export const PROSPECTIVE_COHORT_STUDY = "prospectiveCohort"
 export const RETROSPECTIVE_COHORT_STUDY = "retrospectiveCohort"
-
-export const STRENGTHS = "strengths"
-export const WEAKNESSES = "weaknesses"
-export const CRITICAL_APPRAISAL = "criticalAppraisal"
-export const LEVEL_OF_EVIDENCE = "levelOfEvidence"
-export const EXAMPLE = "exampleStudy"
-export const COMMON_METHODS = "commonRandomizationMethods"

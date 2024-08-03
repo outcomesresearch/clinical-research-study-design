@@ -16,13 +16,13 @@
         class="mb-5"
         :direction="isMobile ? 'vertical' : 'horizontal'"
       >
-        <v-tab :value="STRENGTHS">Strengths</v-tab>
-        <v-tab :value="WEAKNESSES">Weaknesses</v-tab>
-        <v-tab :value="LEVEL_OF_EVIDENCE">Oxford CEBM Level of Evidence</v-tab>
-        <v-tab :value="EXAMPLE">Example Study</v-tab>
+        <v-tab value="strengths">Strengths</v-tab>
+        <v-tab value="weaknesses">Weaknesses</v-tab>
+        <v-tab value="oxford">Oxford CEBM Level of Evidence</v-tab>
+        <v-tab value="example">Example Study</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item :value="STRENGTHS">
+        <v-tabs-window-item value="strengths">
           <ol>
             <li>
               <strong>Rich clinical information</strong>: Case series reports
@@ -52,7 +52,7 @@
             </li>
           </ol>
         </v-tabs-window-item>
-        <v-tabs-window-item :value="WEAKNESSES">
+        <v-tabs-window-item value="weaknesses">
           <ol>
             <li>
               <strong>Lack of comparison or control group</strong>: The absence
@@ -96,7 +96,7 @@
             </li>
           </ol>
         </v-tabs-window-item>
-        <v-tabs-window-item :value="LEVEL_OF_EVIDENCE">
+        <v-tabs-window-item value="oxford">
           <h4 class="my-4">Level of Evidence <strong>4</strong>.</h4>
           <p>
             Level 4 evidence refers to case reports or case series that provide
@@ -118,7 +118,7 @@
             with more rigorous designs to establish stronger evidence.
           </p>
         </v-tabs-window-item>
-        <v-tabs-window-item :value="EXAMPLE">
+        <v-tabs-window-item value="example">
           <h4 class="my-4">
             What is the impact of mindfulness practices on stress reduction in
             college students?
@@ -175,15 +175,8 @@
 </template>
 
 <script>
-import { provide } from "vue";
-import { useTabSync } from "@/mixins/useTabSync"; // Adjust
+import { ref, provide } from "vue";
 import { useResponsive } from "../../mixins/responsiveMixin"; // Adjust the path as needed
-import {
-  EXAMPLE,
-  LEVEL_OF_EVIDENCE,
-  WEAKNESSES,
-  STRENGTHS,
-} from "../../assets/ids";
 
 export default {
   setup() {
@@ -191,16 +184,12 @@ export default {
     provide("windowWidth", windowWidth);
     provide("isMobile", isMobile);
 
-    const { tab } = useTabSync(STRENGTHS); // Pass the default tab value
+    const tab = ref(0); // Initialize the tab value
 
     return {
       windowWidth,
       isMobile,
       tab,
-      EXAMPLE,
-      LEVEL_OF_EVIDENCE,
-      WEAKNESSES,
-      STRENGTHS,
     };
   },
 };

@@ -17,13 +17,13 @@
         class="mb-3"
         :direction="isMobile ? 'vertical' : 'horizontal'"
       >
-        <v-tab :value="STRENGTHS">Strengths</v-tab>
-        <v-tab :value="WEAKNESSES">Weaknesses</v-tab>
-        <v-tab :value="LEVEL_OF_EVIDENCE">Oxford CEBM Level of Evidence</v-tab>
-        <v-tab :value="EXAMPLE">Example Study</v-tab>
+        <v-tab value="strengths">Strengths</v-tab>
+        <v-tab value="weaknesses">Weaknesses</v-tab>
+        <v-tab value="oxford">Oxford CEBM Level of Evidence</v-tab>
+        <v-tab value="example">Example Study</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item :value="STRENGTHS">
+        <v-tabs-window-item value="strengths">
           <ol>
             <li>
               <strong>Cost and time efficiency</strong>: Retrospective studies
@@ -45,7 +45,7 @@
             </li>
           </ol>
         </v-tabs-window-item>
-        <v-tabs-window-item :value="WEAKNESSES">
+        <v-tabs-window-item value="weaknesses">
           <ol>
             <li>
               <strong>Recall bias</strong>: Participants may have difficulty
@@ -67,7 +67,7 @@
             </li>
           </ol>
         </v-tabs-window-item>
-        <v-tabs-window-item :value="LEVEL_OF_EVIDENCE">
+        <v-tabs-window-item value="oxford">
           <h4 class="my-4">Level of Evidence <strong>2b</strong>.</h4>
           <p>
             Level 2b evidence refers to individual cohort studies, including
@@ -84,7 +84,7 @@
             lacking.
           </p>
         </v-tabs-window-item>
-        <v-tabs-window-item :value="EXAMPLE">
+        <v-tabs-window-item value="example">
           <h4 class="my-4">
             Does the new rehabilitation program improve functional outcomes in
             stroke patients more effectively than the standard rehabilitation
@@ -183,13 +183,13 @@
                 <li>
                   Given the fixed sample size, the investigator can be confident
                   where the true value lies for the difference in FIM between
-                  standard and new rehabilitation program (somewhere between
-                  3.04 and 6.96). Given that a clinically meaningful change in
-                  FIM score is 10 points, the observed between-group difference
-                  of 5 points suggests only a moderate improvement with the new
-                  program. The upper bound of the CI (6.96) suggests that even
-                  the largest plausible effect size value is still not
-                  clinically meaningful.
+                  standard and new rehabilitation program (somewhere
+                  between 3.04 and 6.96). Given that a clinically meaningful
+                  change in FIM score is 10 points, the observed between-group
+                  difference of 5 points suggests only a moderate improvement
+                  with the new program. The upper bound of the CI (6.96)
+                  suggests that even the largest plausible effect size value is
+                  still not clinically meaningful.
                 </li>
               </ul>
             </li>
@@ -201,15 +201,8 @@
 </template>
 
 <script>
-import { provide } from "vue";
-import { useTabSync } from "@/mixins/useTabSync"; // Adjust
+import { ref, provide } from "vue";
 import { useResponsive } from "../../mixins/responsiveMixin"; // Adjust the path as needed
-import {
-  EXAMPLE,
-  LEVEL_OF_EVIDENCE,
-  WEAKNESSES,
-  STRENGTHS,
-} from "../../assets/ids";
 
 export default {
   setup() {
@@ -217,16 +210,12 @@ export default {
     provide("windowWidth", windowWidth);
     provide("isMobile", isMobile);
 
-    const { tab } = useTabSync(STRENGTHS); // Pass the default tab value
+    const tab = ref(0); // Initialize the tab value
 
     return {
       windowWidth,
       isMobile,
       tab,
-      EXAMPLE,
-      LEVEL_OF_EVIDENCE,
-      WEAKNESSES,
-      STRENGTHS,
     };
   },
 };

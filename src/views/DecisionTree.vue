@@ -7,7 +7,7 @@
           height="5"
           :model-value="progress"
           class="progressBarTag"
-        />
+        ></v-progress-linear>
         <v-card-item>
           <v-card-title className="v-card-title card-title-bar">
             <span className="mr-5" :style="{ 'word-wrap': 'break-spaces' }">{{
@@ -99,7 +99,7 @@
 <script>
 import StepCard from "../components/StepCard.vue";
 import rootTree from "../assets/rootTree";
-// import { ROOT } from "../assets/ids";
+import { ROOT } from "../assets/ids";
 import { findLongestPath, findPreviousSteps } from "../utils";
 import Descriptions from "../components/stepDescriptionComponents/index";
 
@@ -107,7 +107,7 @@ export default {
   props: ["step"],
   data() {
     return {
-      currentStep: undefined,
+      currentStep: ROOT,
       path: [],
       steps: rootTree,
       nextStep: undefined,
@@ -120,8 +120,10 @@ export default {
   watch: {
     // Watch for changes in currentStep to update the URL
     currentStep(newStep, oldStep) {
-      if (newStep !== oldStep && oldStep) {
-        this.$router.push({ query: { step: newStep } });
+      if (newStep !== oldStep) {
+        this.$router
+          .push({ path: "/decision-tree", query: { step: newStep } })
+          .catch(console.error);
       }
     },
   },

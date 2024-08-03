@@ -15,13 +15,13 @@
         :direction="isMobile ? 'vertical' : 'horizontal'"
         class="mb-3"
       >
-        <v-tab :value="COMMON_METHODS">Common Randomization Methods</v-tab>
-        <v-tab :value="STRENGTHS">Strengths</v-tab>
-        <v-tab :value="WEAKNESSES">Weaknesses</v-tab>
+        <v-tab value="commonMethods">Common Randomization Methods</v-tab>
+        <v-tab value="strengths">Strengths</v-tab>
+        <v-tab value="weaknesses">Weaknesses</v-tab>
       </v-tabs>
 
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item :value="COMMON_METHODS">
+        <v-tabs-window-item value="commonMethods">
           <ol>
             <li>
               <strong>Simple Randomization</strong>: Participants are randomly
@@ -46,7 +46,7 @@
             </li>
           </ol>
         </v-tabs-window-item>
-        <v-tabs-window-item :value="STRENGTHS">
+        <v-tabs-window-item value="strengths">
           <ol>
             <li>
               Achieves balance in known and unknown factors between intervention
@@ -58,7 +58,7 @@
             </li>
           </ol>
         </v-tabs-window-item>
-        <v-tabs-window-item :value="WEAKNESSES">
+        <v-tabs-window-item value="weaknesses">
           <ol>
             <li>Impractical or unethical in certain situations.</li>
             <li>
@@ -72,26 +72,21 @@
 </template>
 
 <script>
-import { provide } from "vue";
-import { useTabSync } from "@/mixins/useTabSync"; // Adjust
+import { ref, provide } from "vue";
 import { useResponsive } from "../../mixins/responsiveMixin"; // Adjust the path as needed
-import { WEAKNESSES, STRENGTHS, COMMON_METHODS } from "../../assets/ids";
 
 export default {
+  name: "RandomizationInfo",
   setup() {
     const { windowWidth, isMobile } = useResponsive();
-    provide("windowWidth", windowWidth);
     provide("isMobile", isMobile);
 
-    const { tab } = useTabSync(COMMON_METHODS); // Pass the default tab value
+    const tab = ref(0); // Initialize the tab value
 
     return {
       windowWidth,
       isMobile,
       tab,
-      WEAKNESSES,
-      STRENGTHS,
-      COMMON_METHODS,
     };
   },
 };
