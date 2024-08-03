@@ -128,6 +128,12 @@ export default {
     },
   },
   created() {
+    // If query param not provided or it's not a valid step, fallback to ROOT
+    if (!this.step || !rootTree[this.step]) {
+      this.currentStep = ROOT;
+      return;
+    }
+
     // When component is created, initialize the current step from the URL or default
     if (this.step) {
       this.currentStep = this.step;
