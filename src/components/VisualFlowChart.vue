@@ -14,8 +14,10 @@
 <script>
 import * as d3 from "d3";
 import * as dagre from "dagre";
-import smalldata from "../assets/rootTree";
+import rootTree from "../assets/rootTree";
 import * as dagred3 from "dagre-d3/dist/dagre-d3";
+import { findPreviousSteps } from "../utils";
+import { EXPERIMENTAL_STUDY_ID } from "@/assets/ids";
 
 function responsivefy(svg) {
   // get container + svg aspect ratio
@@ -64,6 +66,7 @@ const setLabelBackgrounds = () => {
 
 export default {
   name: "visual-flow-chart",
+  props: ["step"],
   data() {
     return {
       gdata: null,
@@ -73,7 +76,9 @@ export default {
   },
   created() {
     let myMap = new Map();
-    let initialdata = Object.values(smalldata).map((a) => {
+
+    let initialdata = Object.values(rootTree).map((a) => {
+      a = { ...a, cssClass: a.color };
       // make sure to remap 'next' key as 'choices' for one-choice steps
       if (!a.choices && a.next) return { ...a, choices: [{ next: a.next }] };
       if (!a.choices && !a.next) return { ...a, choices: [] };
@@ -143,7 +148,8 @@ export default {
         .attr("data-detail", (v) => graph.node(v).detail)
         .on("mouseenter", () => {
           // this.highlightEdges(d, i);
-          tooltip.style("visibility", "visible");
+          if (this.dataset && this.dataset.detail)
+            tooltip.style("visibility", "visible");
         })
         .on("click", function (event) {
           svg.remove();
@@ -151,10 +157,11 @@ export default {
           __router.push({ path: "decision-tree", query: { step: event } });
         })
         .on("mousemove", function () {
-          tooltip
-            .text(this.dataset.detail)
-            .style("top", event.pageY - 10 + "px")
-            .style("left", event.pageX + 10 + "px");
+          if (this.dataset.detail)
+            tooltip
+              .text(this.dataset.detail)
+              .style("top", event.pageY - 10 + "px")
+              .style("left", event.pageX + 10 + "px");
         })
         .on("mouseout", () => {
           d3.selectAll("rect.label-container").classed("parent", false);
@@ -224,13 +231,14 @@ export default {
 }
 .node text {
   pointer-events: none;
+  font-weight: 500;
 }
 .node rect,
 .node circle,
 .node ellipse {
-  stroke: #333;
+  /* stroke: #333; */
   fill: #fff;
-  stroke-width: 1px;
+  /* stroke-width: 1px; */
 }
 
 #tooltip_template {
@@ -252,15 +260,55 @@ export default {
   fill: lightyellow;
 }
 
-.node > rect.label-container.parent {
-  fill: orange;
+.rect {
+  stroke-width: 2px;
 }
 
-.node > rect.label-container.child {
-  fill: steelblue;
+/* Observational study styles */
+.green-lighten-2 > rect {
+  fill: #eff8f0;
+}
+.green-lighten-2 text {
+  fill: #82c684;
 }
 
-.node > rect.label-container.selected {
-  fill: gray;
+/* Analytical / Descriptive study styles */
+.green-darken-2 > rect {
+  fill: #e7f1e7;
+}
+.green-darken-2 text {
+  fill: #509b53;
+}
+
+/* Leaf styles for observational / analytical / descriptive */
+.teal-darken-4 > rect {
+  fill: #dfe9e8;
+}
+.teal-darken-4 text {
+  fill: #004d3f;
+}
+
+/* Experimental study styles */
+.blue-lighten-2 > rect {
+  fill: #ebf6fe;
+}
+.blue-lighten-2 text {
+  fill: #67b7f6;
+}
+
+/* Analytical / Descriptive study styles */
+.blue-darken-2 > rect {
+  fill: #e3eefa;
+}
+.blue-darken-2 text {
+  fill: #1976d2;
+}
+
+/* Leaf styles for observational / analytical / descriptive */
+.indigo-darken-4 > rect {
+  fill: #e3e4ef;
+}
+.indigo-darken-4 text {
+  fill: #1f2881;
 }
 </style>

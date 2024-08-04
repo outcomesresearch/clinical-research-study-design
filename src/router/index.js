@@ -18,6 +18,7 @@ const routes = [
     {
         path: '/flow-chart',
         name: 'FlowChart',
+        props: (route) => ({ step: route.query.step }),
         component: VisualFlowChart
     },
     {
