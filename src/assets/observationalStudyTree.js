@@ -52,7 +52,7 @@ const analyticalStudySubtree = {
   [PERSPECTIVE]: {
     type: "question",
     title: "What is the perspective of the researcher relative to the data under study?",
-    flowChartTitle: "What is the perspective of the\nresearcher relative to the data under study?",
+    flowChartTitle: "What is the perspective of the\nresearcher relative to\nthe data under study?",
     id: PERSPECTIVE,
     component: "PerspectiveQuestion",
     inputs: [DIRECTION],
@@ -101,7 +101,7 @@ const analyticalStudySubtree = {
   },
   [CROSS_SECTIONAL_STUDY]: {
     type: "statement",
-    title: "Cross Sectional Study.",
+    title: "Cross Sectional Study",
     id: CROSS_SECTIONAL_STUDY,
     leaf: true,
     inputs: [DIRECTION],
@@ -123,7 +123,7 @@ const descriptiveStudySubtree = {
   },
   [HOW_MANY_SUBJECTS]: {
     type: "question",
-    title: "How many subjects were there?",
+    title: "How many subjects\nwere there?",
     id: HOW_MANY_SUBJECTS,
     component: "HowManySubjctsDescription",
     inputs: [DESCRIPTIVE_STUDY],

@@ -8,6 +8,7 @@ export default {
     [ROOT]: {
         id: ROOT,
         title: "Did the investigator assign exposures?",
+        flowChartTitle: "Did the investigator\nassign exposures?",
         component: "AssignExposures",
         inputs: [],
         choices: [
