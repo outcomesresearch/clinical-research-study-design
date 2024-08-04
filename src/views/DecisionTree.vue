@@ -49,7 +49,7 @@
         </v-card-item>
         <v-card-item
           selected-class="bg-primary"
-          v-if="currentQuestion.choices"
+          v-if="currentQuestion.choices && currentQuestion.choices.length"
           :key="currentQuestion.id"
           class="flex flex-wrap"
         >
@@ -205,7 +205,6 @@ export default {
 <style scoped>
 #app .app-container .container {
   padding: 12px !important;
-  margin: 100px;
 }
 
 .fade-enter-active,

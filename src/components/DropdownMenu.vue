@@ -4,7 +4,12 @@
       <v-icon icon="mdi-dots-horizontal" v-bind="props" />
     </template>
     <v-list>
-      <v-list-item v-for="(item, index) in items" :key="index" :value="index">
+      <v-list-item
+        @click="$router.push({ name: 'FlowChart' })"
+        v-for="(item, index) in items"
+        :key="index"
+        :value="index"
+      >
         <v-list-item-title>{{ item.title }}</v-list-item-title>
       </v-list-item>
     </v-list>

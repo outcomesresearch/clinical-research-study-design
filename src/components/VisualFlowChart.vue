@@ -1,9 +1,14 @@
 <template>
-  <div class="svg-container" id="flowchart-container">
-    <svg class="svg-content">
-      <g></g>
-    </svg>
-  </div>
+  <v-card class="mx-auto my-12 container" :elevation="2">
+    <v-card-title>Visual Decision Tree</v-card-title>
+    <v-card-item>
+      <div class="svg-container" id="flowchart-container">
+        <svg class="svg-content">
+          <g></g>
+        </svg>
+      </div>
+    </v-card-item>
+  </v-card>
 </template>
 
 <script>
@@ -39,6 +44,23 @@ function responsivefy(svg) {
     svg.attr("height", Math.round(targetWidth / aspect));
   }
 }
+
+const setLabelBackgrounds = () => {
+  d3.selectAll(".edgeLabel").each(function () {
+    console.log("foundOne");
+    var label = d3.select(this);
+    var bbox = label.node().getBBox(); // Get bounding box of the label
+
+    // Insert a rect before the text label in the DOM
+    label
+      .insert("rect", ":first-child")
+      .attr("x", bbox.x - 2) // A small offset for padding
+      .attr("y", bbox.y - 2)
+      .attr("width", bbox.width + 4)
+      .attr("height", bbox.height + 4)
+      .style("fill", "#ffffff"); // Set background color
+  });
+};
 
 export default {
   name: "visual-flow-chart",
@@ -76,6 +98,7 @@ export default {
   },
   methods: {
     render: function () {
+      const __router = this.$router;
       if (this.gdata === null) return "no data";
       const graph = new dagred3.graphlib.Graph({}).setGraph({});
       for (const [key, value] of this.gdata.entries()) {
@@ -108,6 +131,8 @@ export default {
       // Run the renderer. This is what draws the final graph.
       render(svg, graph);
 
+      setLabelBackgrounds();
+
       let tooltip = d3
         .select("body")
         .append("div")
@@ -119,6 +144,11 @@ export default {
         .on("mouseenter", () => {
           // this.highlightEdges(d, i);
           tooltip.style("visibility", "visible");
+        })
+        .on("click", function (event) {
+          svg.remove();
+          tooltip.remove();
+          __router.push({ path: "decision-tree", query: { step: event } });
         })
         .on("mousemove", function () {
           tooltip
@@ -140,9 +170,6 @@ export default {
           d3.select(this).classed("selected", false);
         });
       dagre.layout(graph);
-      //   svg.attr("width", "100%");
-      //   svg.attr("height", '100%');
-      //   this.graph = inner;
     },
     highlightEdges: function (d) {
       let children = this.gdata.get(d).choices.map((A) => A.next);
@@ -178,6 +205,10 @@ export default {
 #flowchart-container {
   width: 100%;
   max-width: 1500px;
+}
+
+#app .app-container .container {
+  padding: 12px !important;
 }
 
 .svg-container {
