@@ -30,6 +30,8 @@ jobs:
           npm install
           npm run build
           ls -la
+          cp dist/index.html dist/404.html
+          ls -la
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5

@@ -132,7 +132,7 @@ const descriptiveStudySubtree = {
     inputs: [DESCRIPTIVE_STUDY],
     choices: [
       { answer: "One subject", next: CASE_REPORT },
-      { answer: "More than\none", next: CASE_SERIES },
+      { answer: "More than one", next: CASE_SERIES },
     ],
   },
   [CASE_REPORT]: {
