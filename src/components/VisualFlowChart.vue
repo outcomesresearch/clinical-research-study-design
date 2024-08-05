@@ -17,7 +17,6 @@ import * as dagre from "dagre";
 import rootTree from "../assets/rootTree";
 import * as dagred3 from "dagre-d3/dist/dagre-d3";
 import { findPreviousSteps } from "../utils";
-import { EXPERIMENTAL_STUDY_ID } from "@/assets/ids";
 
 function responsivefy(svg) {
   // get container + svg aspect ratio
@@ -47,10 +46,13 @@ function responsivefy(svg) {
   }
 }
 
-const setLabelBackgrounds = () => {
-  d3.selectAll(".edgeLabel").each(function () {
-    console.log("foundOne");
+const setLabelBackgrounds = (previousSteps) => {
+  d3.selectAll(".edgeLabel").each(function (d) {
     var label = d3.select(this);
+
+    // Get w which is the later side of the edge, if it's a previous step then
+    // mark this edge with a class that it's within the "previous" path
+    const { w } = d;
     var bbox = label.node().getBBox(); // Get bounding box of the label
 
     // Insert a rect before the text label in the DOM
@@ -61,8 +63,45 @@ const setLabelBackgrounds = () => {
       .attr("width", bbox.width + 4)
       .attr("height", bbox.height + 4)
       .style("fill", "#ffffff"); // Set background color
+
+    label.classed("previousStep", previousSteps.includes(w));
   });
 };
+
+const setArrowColor = (previousSteps) => {
+  d3.selectAll(".edgePath").each(function (d) {
+    var label = d3.select(this);
+    const { w } = d;
+    label.classed("previousStep", previousSteps.includes(w));
+  });
+};
+
+function getCssClassesForQueryParam(currentStepConfig, queryParam) {
+  const { id, color } = currentStepConfig;
+
+  // Start off with css class labeling it as currnetStep, if it is
+  let className = id === queryParam ? "currentStep" : "";
+  const previousSteps = rootTree[queryParam]
+    ? findPreviousSteps(rootTree[queryParam].id)
+    : [];
+
+  // If this is a prerevious step, then mark it accordingly
+  // If it's a previous step and it has a color, add that too
+  return previousSteps.includes(id)
+    ? `${className} previousStep ${color}`
+    : className;
+}
+
+function getCssClasses(currentStepConfig) {
+  const { color } = currentStepConfig;
+
+  // Start off with css class labeling it as currnetStep, if it is
+  let className = "";
+
+  // If this is a prerevious step, then mark it accordingly
+  // If it's a previous step and it has a color, add that too
+  return `${className} ${color}`;
+}
 
 export default {
   name: "visual-flow-chart",
@@ -78,7 +117,13 @@ export default {
     let myMap = new Map();
 
     let initialdata = Object.values(rootTree).map((a) => {
-      a = { ...a, cssClass: a.color };
+      a = {
+        ...a,
+        cssClass:
+          this.step && rootTree[this.step]
+            ? getCssClassesForQueryParam(a, this.step)
+            : getCssClasses(a),
+      };
       // make sure to remap 'next' key as 'choices' for one-choice steps
       if (!a.choices && a.next) return { ...a, choices: [{ next: a.next }] };
       if (!a.choices && !a.next) return { ...a, choices: [] };
@@ -104,8 +149,11 @@ export default {
   methods: {
     render: function () {
       const __router = this.$router;
+
       if (this.gdata === null) return "no data";
+
       const graph = new dagred3.graphlib.Graph({}).setGraph({});
+
       for (const [key, value] of this.gdata.entries()) {
         graph.setNode(key, {
           label: value.title,
@@ -127,7 +175,7 @@ export default {
       const svg = d3
         .select("div#flowchart-container")
         .select("svg")
-        .attr("width", 1380)
+        .attr("width", 1320)
         .attr("height", 800)
         .call(responsivefy);
 
@@ -136,7 +184,10 @@ export default {
       // Run the renderer. This is what draws the final graph.
       render(svg, graph);
 
-      setLabelBackgrounds();
+      const previousSteps = findPreviousSteps(this.step);
+      if (previousSteps.length) svg.classed("selectionMode", true);
+      setLabelBackgrounds(previousSteps);
+      setArrowColor(previousSteps);
 
       let tooltip = d3
         .select("body")
@@ -233,13 +284,6 @@ export default {
   pointer-events: none;
   font-weight: 500;
 }
-.node rect,
-.node circle,
-.node ellipse {
-  /* stroke: #333; */
-  fill: #fff;
-  /* stroke-width: 1px; */
-}
 
 #tooltip_template {
   position: absolute;
@@ -251,17 +295,32 @@ export default {
   visibility: hidden;
 }
 .edgePath path {
-  stroke: #333;
-  fill: #333;
+  stroke: darkgrey;
+  fill: darkgrey;
   stroke-width: 1.5px;
 }
 
-.study > rect {
-  fill: lightyellow;
+rect {
+  stroke-width: 2px;
+  fill: #fff;
+}
+text {
+  fill: darkgrey;
 }
 
-.rect {
-  stroke-width: 2px;
+/* color of node and text for nodes that dont have 'colors' prop in JSON */
+.previousStep rect {
+  fill: #ededed;
+}
+.previousStep text {
+  fill: #525252;
+  font-weight: 500;
+}
+
+.previousStep.edgePath path {
+  stroke: #2d2d2d;
+  fill: #2d2d2d;
+  stroke-width: 1.5px;
 }
 
 /* Observational study styles */

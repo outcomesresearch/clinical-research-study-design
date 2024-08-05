@@ -5,8 +5,8 @@
     </template>
     <v-list>
       <v-list-item
-        @click="$router.push({ name: 'FlowChart' })"
         v-for="(item, index) in items"
+        @click="$router.push({ name: 'FlowChart', query: { step: stepId } })"
         :key="index"
         :value="index"
       >
@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  props: ["stepId"],
   data() {
     return {
       items: [{ title: "View this step in flow chart" }],

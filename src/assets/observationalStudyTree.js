@@ -28,22 +28,23 @@ const analyticalStudySubtree = {
   [DIRECTION]: {
     type: "question",
     title: "What is the direction of research?",
+    flowChartTitle: "What is the direction\nof research?",
     id: DIRECTION,
     component: "DirectionDescription",
     inputs: [ANALYTICAL_STUDY],
     choices: [
       {
-        answer: "Exposure → Outcome",
+        answer: "Exposure\n→\nOutcome",
         next: PERSPECTIVE,
         option_description: "Exposure leads to outcome"
       },
       {
-        answer: "Outcome → Exposure",
+        answer: "Outcome\n→\nExposure",
         next: CASE_CONTROL,
         option_description: "Outcome leads to exposure"
       },
       {
-        answer: "Exposure <?> Outcome",
+        answer: "Exposure\n<?>\nOutcome",
         next: CROSS_SECTIONAL_STUDY,
         option_description: "Relationship between exposure and outcome is indeterminate"
       },
@@ -102,6 +103,7 @@ const analyticalStudySubtree = {
   [CROSS_SECTIONAL_STUDY]: {
     type: "statement",
     title: "Cross Sectional Study",
+    flowChartTitle: "Cross Sectional\nStudy",
     id: CROSS_SECTIONAL_STUDY,
     leaf: true,
     inputs: [DIRECTION],
@@ -123,13 +125,14 @@ const descriptiveStudySubtree = {
   },
   [HOW_MANY_SUBJECTS]: {
     type: "question",
-    title: "How many subjects\nwere there?",
+    title: "How many subjects were there?",
+    flowChartTitle: "How many subjects\nwere there?",
     id: HOW_MANY_SUBJECTS,
     component: "HowManySubjctsDescription",
     inputs: [DESCRIPTIVE_STUDY],
     choices: [
       { answer: "One subject", next: CASE_REPORT },
-      { answer: "More than one", next: CASE_SERIES },
+      { answer: "More than\none", next: CASE_SERIES },
     ],
   },
   [CASE_REPORT]: {

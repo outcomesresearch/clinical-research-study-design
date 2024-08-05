@@ -27,7 +27,7 @@
                   maxWidth: 'fit-content',
                 }"
               >
-                <DropdownMenu />
+                <DropdownMenu :stepId="currentQuestion.id" />
               </span>
             </div>
             <span className="chips" v-if="breadcrumbs.length">
@@ -40,7 +40,7 @@
               >
             </span>
             <span className="showOnDesktop">
-              <DropdownMenu />
+              <DropdownMenu :stepId="currentQuestion.id" />
             </span>
           </v-card-title>
         </v-card-item>
