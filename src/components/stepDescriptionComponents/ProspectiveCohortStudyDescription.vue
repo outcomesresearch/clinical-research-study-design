@@ -20,6 +20,7 @@
         <v-tab value="strengths">Strengths</v-tab>
         <v-tab value="weaknesses">Weaknesses</v-tab>
         <v-tab value="oxford">Oxford CEBM Level of Evidence</v-tab>
+        <v-tab value="criticalAppraisal">Critical Appraisal</v-tab>
         <v-tab value="example">Example Study</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
@@ -97,6 +98,41 @@
             clinical decision-making, especially when higher-quality evidence is
             lacking.
           </p>
+        </v-tabs-window-item>
+        <v-tabs-window-item value="criticalAppraisal">
+          <p>
+            To critically appraise prospective cohort studies, consider the key
+            sources of bias that may impact the research and findings. Although
+            over 35 biases have been described (Sackett J Chronic Dis 1979; 32:
+            51–63), the main biases in prospective cohort studies are:
+          </p>
+          <ol>
+            <li>
+              <strong>Selection bias</strong>: Bias in recruitment, which
+              includes selection bias, occurs when the sampling process is
+              flawed.
+            </li>
+            <li>
+              <strong>Attribution bias</strong>: Systematic error due to unequal
+              loss of participants caused by factors like deaths, unsatisfactory
+              results, or adverse effects.
+            </li>
+            <li>
+              <strong>Recall bias</strong>: This includes bias while performing
+              the study, involving errors due to differences in participants'
+              recollections and is common in retrospective studies and surveys.
+            </li>
+            <li>
+              <strong>Measurement bias</strong>: Systematic distortion
+              in information gathering, such as varying techniques in blood
+              pressure readings.
+            </li>
+            <li>
+              <strong>Performance or procedure bias</strong>: Arises from
+              treatment disparities among groups, such as different levels of
+              care for surgical versus non-surgical patients.
+            </li>
+          </ol>
         </v-tabs-window-item>
         <v-tabs-window-item value="example">
           <h4 class="my-4">
