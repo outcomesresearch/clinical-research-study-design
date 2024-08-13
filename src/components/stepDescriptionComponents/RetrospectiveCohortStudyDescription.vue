@@ -19,6 +19,7 @@
       >
         <v-tab value="strengths">Strengths</v-tab>
         <v-tab value="weaknesses">Weaknesses</v-tab>
+        <v-tab value="criticalAppraisal">Critical Appraisal</v-tab>
         <v-tab value="oxford">Oxford CEBM Level of Evidence</v-tab>
         <v-tab value="example">Example Study</v-tab>
       </v-tabs>
@@ -66,6 +67,54 @@
               challenging to control.
             </li>
           </ol>
+        </v-tabs-window-item>
+        <v-tabs-window-item value="criticalAppraisal">
+          <p>
+            When critically appraising retrospective observational studies,
+            consider key biases in data collection, study design, data analysis,
+            and interpretation:
+          </p>
+          <ul>
+            <li>
+              <strong>Recall bias:</strong> Occurs when differences in
+              participants’ recollections affect the study accuracy.
+            </li>
+            <li>
+              <strong>Selection bias:</strong> Where non-random participant
+              selection skews the sample.
+            </li>
+            <li>
+              <strong>Information bias:</strong> Arises from systematic
+              differences in data collection, such as inconsistent medical
+              records.
+            </li>
+            <li>
+              <strong>Confounding bias:</strong> A bias in the study design when
+              an extraneous variable distorts the relationship between exposure
+              and outcome, leading to incorrect conclusions.
+            </li>
+            <li>
+              <strong>Survivor bias:</strong> Occurs when only those who have
+              survived a condition are included, skewing results.
+            </li>
+            <li>
+              <strong>Misclassification bias:</strong> Happens when participants
+              are incorrectly categorized, such as with misdiagnosed diseases.
+            </li>
+            <li>
+              <strong>Analysis bias:</strong> Includes inappropriate statistical
+              methods or failure to control for confounding variables that
+              introduce errors.
+            </li>
+            <li>
+              <strong>Observer bias:</strong> Researchers’ expectations
+              influence results.
+            </li>
+            <li>
+              <strong>Reporting bias:</strong> Positive findings are emphasized
+              while negative ones are downplayed or omitted.
+            </li>
+          </ul>
         </v-tabs-window-item>
         <v-tabs-window-item value="oxford">
           <h4 class="my-4">Level of Evidence <strong>2b</strong>.</h4>
@@ -183,13 +232,13 @@
                 <li>
                   Given the fixed sample size, the investigator can be confident
                   where the true value lies for the difference in FIM between
-                  standard and new rehabilitation program (somewhere
-                  between 3.04 and 6.96). Given that a clinically meaningful
-                  change in FIM score is 10 points, the observed between-group
-                  difference of 5 points suggests only a moderate improvement
-                  with the new program. The upper bound of the CI (6.96)
-                  suggests that even the largest plausible effect size value is
-                  still not clinically meaningful.
+                  standard and new rehabilitation program (somewhere between
+                  3.04 and 6.96). Given that a clinically meaningful change in
+                  FIM score is 10 points, the observed between-group difference
+                  of 5 points suggests only a moderate improvement with the new
+                  program. The upper bound of the CI (6.96) suggests that even
+                  the largest plausible effect size value is still not
+                  clinically meaningful.
                 </li>
               </ul>
             </li>
