@@ -1,6 +1,8 @@
 {
   "name": "correct-study-design",
   "version": "0.1.0",
+  "title": "Choosing the Correct Clinical Research Study Design | WashU Outcomes Research",
+  "description": "Online wizard to help investigators select the correct clinical study design for their circumstamce",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
