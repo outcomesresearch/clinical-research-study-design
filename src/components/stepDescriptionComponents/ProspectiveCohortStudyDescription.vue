@@ -19,8 +19,8 @@
       >
         <v-tab value="strengths">Strengths</v-tab>
         <v-tab value="weaknesses">Weaknesses</v-tab>
-        <v-tab value="oxford">Oxford CEBM Level of Evidence</v-tab>
         <v-tab value="criticalAppraisal">Critical Appraisal</v-tab>
+        <v-tab value="oxford">Oxford CEBM Level of Evidence</v-tab>
         <v-tab value="example">Example Study</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
