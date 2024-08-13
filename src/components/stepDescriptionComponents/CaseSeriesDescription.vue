@@ -18,6 +18,7 @@
       >
         <v-tab value="strengths">Strengths</v-tab>
         <v-tab value="weaknesses">Weaknesses</v-tab>
+        <v-tab value="criticalAppraisal">Critical Appraisal</v-tab>
         <v-tab value="oxford">Oxford CEBM Level of Evidence</v-tab>
         <v-tab value="example">Example Study</v-tab>
       </v-tabs>
@@ -71,29 +72,6 @@
               series reports cannot be generalized to the broader population due
               to the absence of randomization and control.
             </li>
-            <li>
-              <strong>Critical Appraisal</strong>: To critically appraise case
-              reports, consider factors such as selective reporting of details,
-              preconceived notions about a particular condition, and
-              researcher’s own bias. There are several types of bias that can
-              potentially impact cross-sectional studies. Here are the main
-              types to consider.
-            </li>
-            <li>
-              <strong>Ascertainment bias</strong>: Cases may be selected based
-              on certain characteristics or circumstances, leading to an
-              unrepresentative sample.
-            </li>
-            <li>
-              <strong>Reporting bias</strong>: Variations in reporting practices
-              and inconsistent documentation may introduce biases in data
-              collection.
-            </li>
-            <li>
-              <strong>Observer bias</strong>: Researchers or clinicians involved
-              in collecting and interpreting data may introduce their own
-              subjective biases.
-            </li>
           </ol>
         </v-tabs-window-item>
         <v-tabs-window-item value="oxford">
@@ -117,6 +95,32 @@
             useful for generating hypotheses, but they require further research
             with more rigorous designs to establish stronger evidence.
           </p>
+        </v-tabs-window-item>
+        <v-tabs-window-item value="criticalAppraisal">
+          <p>
+            To critically appraise case series, consider factors such as
+            selective reporting of details, preconceived notions about a
+            particular condition, and researcher’s own bias. There are several
+            types of bias that can potentially impact case series. Here are the
+            main types to consider.
+          </p>
+          <ul>
+            <li>
+              <strong>Ascertainment bias</strong>: Cases may be selected based
+              on certain characteristics or circumstances, leading to an
+              unrepresentative sample.
+            </li>
+            <li>
+              <strong>Reporting bias</strong>: Variations in reporting practices
+              and inconsistent documentation may introduce biases in data
+              collection.
+            </li>
+            <li>
+              <strong>Observer bias</strong>: Researchers or clinicians involved
+              in collecting and interpreting data may introduce their own
+              subjective biases.
+            </li>
+          </ul>
         </v-tabs-window-item>
         <v-tabs-window-item value="example">
           <h4 class="my-4">

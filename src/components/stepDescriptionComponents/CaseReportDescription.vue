@@ -78,7 +78,7 @@
             To critically appraise case reports, consider factors such as
             selective reporting of details, preconceived notions about a
             particular condition, and researcher’s own bias. There are several
-            types of bias that can potentially impact cross-sectional studies:
+            types of bias that can potentially impact case report studies:
           </p>
           <ul>
             <li>
@@ -133,9 +133,9 @@
             pediatric patients?
           </h4>
           <ul>
-            <li><strong>Study design</strong>: Case series report</li>
+            <li><strong>Study design</strong>: Case report</li>
             <li>
-              <strong>Study population</strong>: Pediatric patients aged 8 to 12
+              <strong>Study population</strong>: Single pediatric patient aged 8
               years, diagnosed with anxiety disorders, and seeking treatment at
               a pediatric mental health clinic.
             </li>
@@ -146,24 +146,21 @@
                   <span class="italic">Independent Variable</span>: Virtual
                   Reality Therapy (VRT), Exposure to VR therapy sessions,
                   Duration of each VR therapy session, and Specific VR
-                  environments used
+                  environments used.
                 </li>
                 <li>
                   <span class="italic">Dependent Variable</span>: Anxiety Levels
                   - Measured using a validated anxiety scale before and after
-                  VRT sessions
+                  VRT sessions.
                 </li>
               </ul>
             </li>
             <li>
-              <strong>Sample Size Calculation</strong>: Given the exploratory
-              nature of the case series design and the absence of a
-              predetermined sample size calculation, our study aimed to include
-              a convenience sample of pediatric patients who meet the inclusion
-              criteria and consent to participate in the VRT program. As we
-              gather data from these cases, we will compile and analyze the
-              results to provide descriptive information about the impact of VRT
-              on anxiety levels in pediatric patients.
+              <strong>Approach</strong>: Gather data from this case, analyze the
+              results, and provide a detailed description about the impact of
+              VRT on anxiety levels in this specific pediatric patient. This
+              approach allows for a more in-depth understanding of the
+              individual patient’s response to the therapy.
             </li>
           </ul>
         </v-tabs-window-item>
