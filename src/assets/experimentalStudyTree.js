@@ -7,6 +7,8 @@ import {
   NEW_TREATMENT_BETTER,
   SUPERIORITY_TRIAL,
   EQUIVALENCE_TRIAL,
+  NONINFERIORITY_TRIAL,
+  EQUIVALENCE_OR_NONINFERIORITY
 } from "./ids"
 
 export default {
@@ -51,19 +53,24 @@ export default {
   [NEW_TREATMENT_BETTER]: {
     type: "question",
     id: NEW_TREATMENT_BETTER,
-    title: "Is the aim of the study to demonstrate a new treatment is significantly better than existing treatment or placebo?",
-    flowChartTitle: "Is the aim of the study to demonstrate\na new treatment is significantly better than\nexisting treatment or placebo?",
+    title: "What does the study aim to demonstrate, relative to an existing treatment or placebo?",
+    flowChartTitle: "What does the study\naim to demonstrate,\nrelative to an existing \ntreatment or placebo?",
     component: "NewTreatmentBetter",
     choices: [
       {
-        answer: "Yes",
+        answer: "New treatment\nis better",
         next: SUPERIORITY_TRIAL,
-        // option_description: "Superiority Trial",
+        option_description: "Aims to establish superiority",
       },
       {
-        answer: "No",
+        answer: "Neither better\nnor worse",
         next: EQUIVALENCE_TRIAL,
-        // option_description: "Participants were not randomly assigned"
+        option_description: "Aims to esablish equivalence"
+      },
+      {
+        answer: "New treatment\n is not worse",
+        next: NONINFERIORITY_TRIAL,
+        option_description: "Aims to establish non-inferiority"
       },
     ],
     inputs: [RANDOMIZED_CONTROLLED_TRIAL],
@@ -72,6 +79,7 @@ export default {
     type: "statement",
     id: SUPERIORITY_TRIAL,
     title: "Superiority Trial",
+    flowChartTitle: "Superiority\nTrial",
     leaf: true,
     component: "SuperiorityTrial",
     color: "indigo-darken-4",
@@ -80,12 +88,22 @@ export default {
   [EQUIVALENCE_TRIAL]: {
     type: "statement",
     id: EQUIVALENCE_TRIAL,
-    title: "Equivalence or Non-Inferiority Trial",
-    flowChartTitle: "Equivalence or\nNon-Inferiority Trial",
+    title: "Equivalence Trial",
+    flowChartTitle: "Equivalence Trial",
     leaf: true,
     component: "EquivalenceTrial",
     color: "indigo-darken-4",
-    inputs: [NEW_TREATMENT_BETTER]
+    inputs: [EQUIVALENCE_OR_NONINFERIORITY]
+  },
+  [NONINFERIORITY_TRIAL]: {
+    type: "statement",
+    id: NONINFERIORITY_TRIAL,
+    title: "Non-Inferiority Trial",
+    flowChartTitle: "Non-Inferiority\nTrial",
+    leaf: true,
+    component: "NonInferiorityTrial",
+    color: "indigo-darken-4",
+    inputs: [EQUIVALENCE_OR_NONINFERIORITY]
   },
   [NONRANDOMIZED_CONTROLLED_TRIAL]: {
     type: "statement",

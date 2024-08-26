@@ -176,7 +176,7 @@ export default {
         .select("div#flowchart-container")
         .select("svg")
         .attr("width", 1320)
-        .attr("height", 800)
+        .attr("height", 850)
         .call(responsivefy);
 
       // Create the renderer object

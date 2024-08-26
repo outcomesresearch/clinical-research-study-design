@@ -73,6 +73,7 @@ const analyticalStudySubtree = {
   [PROSPECTIVE_COHORT_STUDY]: {
     type: "statement",
     title: "Prospective Cohort Study",
+    flowChartTitle: "Prospective\nCohort\nStudy",
     id: PROSPECTIVE_COHORT_STUDY,
     leaf: true,
     inputs: [PERSPECTIVE],
@@ -83,6 +84,7 @@ const analyticalStudySubtree = {
   [RETROSPECTIVE_COHORT_STUDY]: {
     type: "statement",
     title: "Retrospective Cohort Study",
+    flowChartTitle: "Retrospective\nCohort\nStudy",
     id: RETROSPECTIVE_COHORT_STUDY,
     leaf: true,
     inputs: [PERSPECTIVE],
@@ -93,6 +95,7 @@ const analyticalStudySubtree = {
   [CASE_CONTROL]: {
     type: "statement",
     title: "Case Control Study",
+    flowChartTitle: "Case Control\nStudy",
     id: CASE_CONTROL,
     leaf: true,
     inputs: [DIRECTION],
@@ -103,7 +106,7 @@ const analyticalStudySubtree = {
   [CROSS_SECTIONAL_STUDY]: {
     type: "statement",
     title: "Cross Sectional Study",
-    flowChartTitle: "Cross Sectional\nStudy",
+    flowChartTitle: "Cross\nSectional\nStudy",
     id: CROSS_SECTIONAL_STUDY,
     leaf: true,
     inputs: [DIRECTION],
@@ -132,7 +135,7 @@ const descriptiveStudySubtree = {
     inputs: [DESCRIPTIVE_STUDY],
     choices: [
       { answer: "One subject", next: CASE_REPORT },
-      { answer: "More than one", next: CASE_SERIES },
+      { answer: "More than\none", next: CASE_SERIES },
     ],
   },
   [CASE_REPORT]: {

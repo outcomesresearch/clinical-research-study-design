@@ -19,6 +19,7 @@ import ObservationalStudyDescription from "./ObservationalStudyDescription.vue"
 import NewTreatmentBetter from "./NewTreatmentBetter"
 import EquivalenceTrial from "./EquivalenceTrial"
 import SuperiorityTrial from "./SuperiorityTrial"
+import NonInferiorityTrial from "./NonInferiorityTrial.vue"
 
 export default {
     AssignExposures,
@@ -41,5 +42,6 @@ export default {
     ObservationalStudyDescription,
     NewTreatmentBetter,
     EquivalenceTrial,
+    NonInferiorityTrial,
     SuperiorityTrial,
 }

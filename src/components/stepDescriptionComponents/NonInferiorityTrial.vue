@@ -1,11 +1,11 @@
 <template>
   <div>
     <p>
-      An equivalence trial is designed to demonstrate that two treatments are
-      similar in effectiveness within a predetermined margin. If the new
-      treatment is found to be within this margin of the comparator’s effect, it
-      is considered clinically equivalent, even if it does not demonstrate
-      superiority.
+      A non-inferiority trial is designed to establish that the new treatment is
+      not worse than the comparator by more than a predefined non-inferiority
+      margin. If the new treatment is found to be within this margin of the
+      comparator’s effect, it is considered non-inferior, even if it does not
+      demonstrate superiority.
     </p>
     <v-card class="mt-5">
       <v-tabs
@@ -30,15 +30,15 @@
               expected to have similar effectiveness.
             </li>
             <li>
-              <strong>Practicality</strong>: Conducting an equivalence trial can
-              be more feasible when demonstrating superiority is unlikely or
+              <strong>Practicality</strong>: Conducting a non-inferiority trial
+              can be more feasible when demonstrating superiority is unlikely or
               unethical.
             </li>
             <li>
-              <strong>Broader options</strong>: Establishing equivalence allows
-              physicians and patients to consider alternative treatment options
-              that may have other benefits (e.g., cost, convenience) while still
-              maintaining acceptable efficacy.
+              <strong>Broader options</strong>: Establishing non-inferiority
+              allows physicians and patients to consider alternative treatment
+              options that may have other benefits (e.g., cost, convenience)
+              while still maintaining acceptable efficacy.
             </li>
           </ol>
         </v-tabs-window-item>
@@ -46,31 +46,31 @@
           <ol>
             <li>
               <strong>Challenging design</strong>: It can be complex to
-              determine an appropriate equivalence margin, which defines the
+              determine an appropriate non-inferiority margin, which defines the
               acceptable difference between treatments.
             </li>
             <li>
-              <strong>Risk of false conclusions</strong>: If the equivalence
+              <strong>Risk of false conclusions</strong>: If the non-inferiority
               margin is set too wide or the study lacks statistical power, the
               trial may fail to detect a clinically relevant difference between
-              treatments, leading to a false conclusion of equivalence.
+              treatments, leading to a false conclusion of non-inferiority.
             </li>
             <li>
               <strong>Interpretation of results</strong>: Demonstrating
-              equivalence does not establish the new treatment’s superiority; it
-              only establishes that it is not worse beyond the predefined
-              margin.
+              non-inferiority does not establish the new treatment’s
+              superiority; it only establishes that it is not worse beyond the
+              predefined margin.
             </li>
           </ol>
         </v-tabs-window-item>
         <v-tabs-window-item value="criticalAppraisal">
           <p>
-            To critically appraise an equivalence randomized clinical trial
+            To critically appraise a non-inferiority randomized clinical trial
             (RCT), consider the following factors such as adequacy of
             randomization, use of blinding, adequate sample size to provide
             precise estimates, and use of validated and clinically relevant
             outcome measurement. There are several types of bias that can
-            potentially impact equivalence RCTs. Here are the main types to
+            potentially impact non-inferiority RCTs. Here are the main types to
             consider:
           </p>
           <ol>
@@ -92,7 +92,7 @@
             <li>
               <strong>Attrition bias</strong>: If participant dropout rates
               differ between treatment groups and are related to treatment
-              effectiveness, it can bias the assessment of equivalence.
+              effectiveness, it can bias the assessment of non-inferiority.
             </li>
           </ol>
         </v-tabs-window-item>
@@ -105,60 +105,57 @@
             the comparator treatment by more than a pre-defined non-inferiority
             margin. Even if the new treatment does not demonstrate superiority,
             if it falls within the pre-defined margin, it is considered
-            clinically equivalent.
+            non-inferior.
           </p>
         </v-tabs-window-item>
         <v-tabs-window-item value="example">
           <h4 class="my-4">
-            Is treatment X (e.g., a novel medication targeting a specific
-            receptor) for chronic pain equivalent to the current standard
-            treatment (e.g., a combination of pain-relief medications and
-            lifestyle modifications) in terms of reducing pain and improving
-            functional status in patients with chronic migraine?
+            Is treatment Y (e.g., a novel oral medication targeting insulin
+            resistance) for Type 2 Diabetes non-inferior to the current standard
+            treatment (e.g., Metformin) in terms of controlling blood glucose
+            levels and improving insulin sensitivity in patients with Type 2
+            Diabetes?
           </h4>
           <ul>
             <li>
-              <strong>Study design</strong>: Randomized controlled equivalence
-              trial
+              <strong>Study design</strong>: Randomized controlled
+              non-inferiority trial
             </li>
             <li>
               <strong>Study population</strong>: Adults (age 18-65) diagnosed
-              with chronic migraine, who meet the inclusion and exclusion
-              criteria and are willing to participate.
+              with Type 2 Diabetes, who meet all of the inclusion and none of
+              the exclusion criteria and are willing to participate. Dependent
+              Variables. Fasting blood glucose levels, HbA1c levels, insulin
+              sensitivity, and safety profiles.
+            </li>
+            <li><strong>Duration of follow-up</strong>: 24 weeks</li>
+            <li>
+              <strong>Primary outcome measure</strong>: Reduction in HbA1c
+              levels from baseline to week 24, measured using a validated
+              laboratory test.
             </li>
             <li>
-              <strong>Dependent variables</strong>: Pain severity and frequency,
-              functional status (e.g., ability to perform daily activities), and
-              safety profiles.
-            </li>
-            <li><strong>Duration of follow-up</strong>: 12 weeks</li>
-            <li>
-              <strong>Primary outcome measure</strong>: Reduction in pain
-              severity from baseline to week 12, measured using a validated pain
-              scale.
-            </li>
-            <li>
-              <strong>Clinically meaningful difference</strong>: The equivalence
-              margin of 20% difference in pain reduction has been determined to
-              be clinically acceptable, indicating that treatment X should not
-              be more than 20% different than the current standard treatment in
-              terms of reducing pain severity.
+              <strong>Clinically meaningful difference</strong>: The
+              non-inferiority margin of 0.5% reduction in HbA1c levels has been
+              determined to be clinically acceptable, indicating that treatment
+              Y should not be more than 0.5% different than the current standard
+              treatment in terms of reducing HbA1c levels.
             </li>
             <li>
               <strong>Sample size calculation</strong>: Assuming a predetermined
-              equivalence margin of a 20% difference in pain reduction, with a
-              two-sided significance level of 0.05 and a statistical power of
-              80%, a sample size calculation estimates a minimum of 250
-              participants (125 per group).
+              non-inferiority margin of a 0.5% difference in HbA1c reduction,
+              with a two-sided significance level of 0.05 and a statistical
+              power of 80%, a sample size calculation estimates a minimum of 300
+              participants (150 per group).
             </li>
             <li>
-              <strong>Margin of Equivalence</strong>: The margin of equivalence
-              refers to the predefined difference in treatment effect that is
-              considered clinically acceptable. In this fictional trial, a 20%
-              difference in pain reduction is determined to be the margin of
-              equivalence, indicating that treatment X will be considered
-              equivalent if it is not more than 20% different than the current
-              standard treatment in terms of pain reduction.
+              <strong>Margin of Non-inferiority</strong>: The margin of
+              non-inferiority refers to the predefined difference in treatment
+              effect that is considered clinically acceptable. In this trial, a
+              0.5% difference in HbA1c reduction is determined to be the margin
+              of non-inferiority, indicating that treatment Y will be considered
+              non-inferior if it is not more than 0.5% different than the
+              current standard treatment in terms of reducing HbA1c levels.
             </li>
           </ul>
         </v-tabs-window-item>

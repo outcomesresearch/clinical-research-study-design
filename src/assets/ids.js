@@ -19,3 +19,5 @@ export const CASE_SERIES = "caseSeries";
 export const PERSPECTIVE = "cohortPerspective"
 export const PROSPECTIVE_COHORT_STUDY = "prospectiveCohort"
 export const RETROSPECTIVE_COHORT_STUDY = "retrospectiveCohort"
+export const EQUIVALENCE_OR_NONINFERIORITY = "equalOrNonInferior"
+export const NONINFERIORITY_TRIAL = "nonInferiorityTrial"
